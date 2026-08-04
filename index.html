@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Daycare Map — Saskatoon</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1714,7 +1715,18 @@ function initMap(){
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
     L.control.zoom({position:"bottomright"}).addTo(map);
     homeIcon=L.divIcon({html:'<div class="home-pin">📍</div>',className:"",iconSize:[26,26],iconAnchor:[13,26]});
-    // map taps no longer move home (that was hijacking daycare-pin taps); set home via the address bar or ◎ button
+    // Tap near a daycare dot to open its card. We hit-test against the dots
+    // ourselves, which is far more reliable than canvas marker clicks.
+    map.on("click", function(e){
+      const cp=e.containerPoint; let best=null, bestD=22;
+      for(const p of places){
+        if(!p.marker || !geo[p.addr]) continue;
+        const pt=map.latLngToContainerPoint(geo[p.addr]);
+        const d=cp.distanceTo(pt);
+        if(d<bestD){ bestD=d; best=p; }
+      }
+      if(best) openSheet(best);
+    });
     mapReady=true;
   }catch(err){ mapReady=false; }
 }
@@ -1724,8 +1736,7 @@ function addMarker(p){
   const c=geo[p.addr]; if(!c) return;
   const status=(marks[p.id]&&marks[p.id].status)||"todo";
   const fav=!!(marks[p.id]&&marks[p.id].fav);
-  const m=L.circleMarker(c,{radius:fav?9:7,weight:2,color:"#fff",fillColor:ST_COLOR[status],fillOpacity:1,bubblingMouseEvents:false});
-  m.on("click",()=>openSheet(p));
+  const m=L.circleMarker(c,{radius:fav?9:7,weight:2,color:"#fff",fillColor:ST_COLOR[status],fillOpacity:1,interactive:false});
   m.addTo(map);
   p.marker=m;
   refreshMarker(p);
