@@ -19,14 +19,14 @@
     --bar-h:0px;
   }
   body[data-theme="spring"]{
-    --paper:#FBEEA2; --card:#FFF9DC; --ink:#4A3E1C; --soft:#94874A; --line:#ECD886;
-    --accent:#C35931; --accent-soft:#F7D9C4; --sage:#93A544;
-    --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#93A544; --st-full:#C35931;
+    --paper:#FBE0E8; --card:#FFF0F5; --ink:#4A2E38; --soft:#A2808E; --line:#F3D2DE;
+    --accent:#D77A9A; --accent-soft:#F7DCE6; --sage:#C58AA4;
+    --st-todo:#CBBAC2; --st-called:#D89B34; --st-wait:#C58AA4; --st-full:#C15C7A;
   }
   body[data-theme="summer"]{
-    --paper:#FADCE6; --card:#FFF1F6; --ink:#3E2E38; --soft:#9E8894; --line:#F1D2DE;
-    --accent:#B87196; --accent-soft:#ECD8E6; --sage:#8E86C0;
-    --st-todo:#C9BCC4; --st-called:#C99BC0; --st-wait:#8E86C0; --st-full:#C77E8E;
+    --paper:#CBD8AC; --card:#E6EDD4; --ink:#33402A; --soft:#7A8862; --line:#BECC9E;
+    --accent:#6E8B47; --accent-soft:#DCE6C6; --sage:#6E8B47;
+    --st-todo:#AAB78E; --st-called:#C68A3A; --st-wait:#6E8B47; --st-full:#B0603F;
   }
   body[data-theme="autumn"]{
     --paper:#6E3521; --card:#864729; --ink:#F6E7D8; --soft:#D6B79C; --line:#95553A;
@@ -214,7 +214,8 @@
     border-radius:16px; transform:none; resize:both; overflow:hidden;
     box-shadow:0 10px 34px rgba(42,35,32,.3)
   }
-  #sheet.floating .grip{cursor:move;width:64px;height:5px;background:var(--soft);opacity:.45}
+  #sheet.floating .grip{cursor:move;width:100%;height:26px;background:transparent;opacity:1;margin:0 0 6px;position:relative;touch-action:none}
+  #sheet.floating .grip::after{content:"";position:absolute;left:50%;top:11px;transform:translateX(-50%);width:72px;height:5px;background:var(--soft);opacity:.5;border-radius:99px}
   .sh-pop{position:absolute;top:14px;right:52px;border:none;background:var(--paper);width:30px;height:30px;border-radius:50%;font-size:14px;color:var(--soft);cursor:pointer;line-height:1}
   .sh-pop:active{transform:scale(.94)}
   .grip{width:38px;height:4px;background:var(--line);border-radius:99px;margin:6px auto 12px}
@@ -317,7 +318,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v20</div>
+  <div class="ver-badge" id="verBadge">v21</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -386,7 +387,7 @@
     <h3>Provided "as is"</h3>
     <p>This app is offered for general assistance and informational purposes only, without warranties of any kind, express or implied. It does not constitute professional, legal, medical, or child care advice. To the fullest extent permitted by law, the creator accepts no liability for any loss, cost, or decision arising from use of this app or reliance on the information it displays.</p>
 
-    <p class="about-ver">Version 12</p>
+    <p class="about-ver" id="aboutVer">Version 20</p>
   </div>
 </div>
 
@@ -2148,7 +2149,7 @@ function openSheet(p){
   const pop=document.getElementById("popBtn");
   if(pop){ pop.textContent=sheet.classList.contains("floating")?"▣":"⤢"; pop.onclick=toggleFloat; }
   const gripEl=sheet.querySelector(".grip");
-  if(gripEl){ gripEl.onmousedown=startDrag; gripEl.ontouchstart=startDrag; }
+  if(gripEl){ gripEl.addEventListener("mousedown",startDrag); gripEl.addEventListener("touchstart",startDrag,{passive:false}); }
   renderFront(p);
   sheet.classList.add("show");
   if(!sheet.classList.contains("floating")) scrim.classList.add("show");
@@ -2364,7 +2365,10 @@ function renderWaitlist(){
 /* ---------- tabs ---------- */
 const tabMap=document.getElementById("tabMap"), tabList=document.getElementById("tabList"), tabHist=document.getElementById("tabHist"), tabWait=document.getElementById("tabWait"), tabAbout=document.getElementById("tabAbout");
 const mapControls=document.getElementById("mapControls"), radiusRow=document.getElementById("radiusRow"), hintEl=document.getElementById("hint");
+let savedMapView=null;
 function setTab(which){
+  const currentlyMap = !document.body.classList.contains("list") && !document.body.classList.contains("hist") && !document.body.classList.contains("wait") && !document.body.classList.contains("about");
+  if(currentlyMap && which!=="map" && map){ try{ savedMapView={c:map.getCenter(), z:map.getZoom()}; }catch(e){} }
   document.body.classList.toggle("list", which==="list");
   document.body.classList.toggle("hist", which==="hist");
   document.body.classList.toggle("wait", which==="wait");
@@ -2375,6 +2379,7 @@ function setTab(which){
   tabWait.classList.toggle("on", which==="wait");
   tabAbout.classList.toggle("on", which==="about");
   const onMap = which==="map";
+  if(!onMap) closeSheet();
   mapControls.style.display=onMap?"flex":"none";
   { const mc=document.getElementById("mapChips"); if(mc) mc.style.display=onMap?"flex":"none"; }
   radiusRow.style.display=onMap?"flex":"none";
@@ -2382,7 +2387,7 @@ function setTab(which){
   if(!onMap) progress.classList.remove("show");
   setBarHeight();
 }
-function showMap(){ setTab("map"); buildMapChips(); refreshAllMarkers(); if(map) setTimeout(()=>map.invalidateSize(),60); }
+function showMap(){ setTab("map"); buildMapChips(); refreshAllMarkers(); const v=savedMapView; if(map) setTimeout(()=>{ try{ map.invalidateSize(); }catch(e){} if(v){ try{ map.setView(v.c, v.z, {animate:false}); }catch(e){} } },60); }
 function showList(){ setTab("list"); buildChips(); renderList(); }
 function showHistory(){ setTab("hist"); renderHistory(); }
 function showWaitlist(){ setTab("wait"); renderWaitlist(); }
@@ -2486,7 +2491,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  console.log("Daycare Map — build v20 (address suggestions + version badge)");
+  const APP_VER="21";
+  { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
+  console.log("Daycare Map — build v"+APP_VER+" (drag + tab fixes + colour tweaks)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
