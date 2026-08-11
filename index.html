@@ -4,18 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Daycare Map — Saskatoon</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F5F3ED; --card:#FFFDF8; --ink:#2A2320; --soft:#8A7D6F; --line:#E7DDCD;
-    --accent:#C2703D; --accent-soft:#F1E4D6; --sage:#5F7161;
+    --paper:#FFFFFF; --card:#F7F3EA; --ink:#2C2A28; --soft:#8C877F; --line:#ECE6DA;
+    --accent:#5B96A9; --accent-soft:#CDE8E6; --sage:#5B96A9;
     --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#5F7161; --st-full:#A6503F;
     --radius:14px; --radius-sm:10px;
     --bar-h:0px;
+  }
+  body[data-theme="spring"]{
+    --paper:#FBEEA2; --card:#FFF9DC; --ink:#4A3E1C; --soft:#94874A; --line:#ECD886;
+    --accent:#C35931; --accent-soft:#F7D9C4; --sage:#93A544;
+    --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#93A544; --st-full:#C35931;
+  }
+  body[data-theme="summer"]{
+    --paper:#FADCE6; --card:#FFF1F6; --ink:#3E2E38; --soft:#9E8894; --line:#F1D2DE;
+    --accent:#B87196; --accent-soft:#ECD8E6; --sage:#8E86C0;
+    --st-todo:#C9BCC4; --st-called:#C99BC0; --st-wait:#8E86C0; --st-full:#C77E8E;
+  }
+  body[data-theme="autumn"]{
+    --paper:#6E3521; --card:#864729; --ink:#F6E7D8; --soft:#D6B79C; --line:#95553A;
+    --accent:#E7A650; --accent-soft:#59301E; --sage:#D89B4C;
+    --st-todo:#C8A98E; --st-called:#E7A650; --st-wait:#D89B4C; --st-full:#EB7550;
+  }
+  body[data-theme="winter"]{
+    --paper:#1E3A5C; --card:#294B71; --ink:#EAF2FA; --soft:#A6C0D8; --line:#3A587C;
+    --accent:#7FB0D6; --accent-soft:#33557C; --sage:#9FC0DC;
+    --st-todo:#8AA6C0; --st-called:#E0A94E; --st-wait:#7FB0D6; --st-full:#E27A6A;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%;overflow:hidden}
@@ -40,7 +61,13 @@
   .seg button{border:none;background:none;font-family:inherit;font-weight:600;font-size:12.5px;color:var(--soft);padding:6px 13px;border-radius:999px;cursor:pointer}
   .seg button.on{background:var(--ink);color:var(--paper)}
 
-  .addr-row{display:flex;gap:8px}
+  .addr-row{display:flex;gap:8px;position:relative}
+  .addr-suggest{position:absolute;top:calc(100% + 5px);left:0;right:0;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.16);z-index:1300;overflow:hidden;display:none;max-height:52vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .addr-suggest.show{display:block}
+  .sg-head{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;padding:9px 14px 4px}
+  .sg-item{display:block;width:100%;text-align:left;border:none;background:none;font-family:inherit;font-size:13.5px;color:var(--ink);padding:11px 14px;cursor:pointer;border-top:1px solid var(--line);line-height:1.35}
+  .sg-item:active{background:var(--accent-soft)}
+  .ver-badge{position:fixed;left:6px;bottom:calc(env(safe-area-inset-bottom) + 4px);z-index:1400;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--soft);background:var(--card);opacity:.72;padding:2px 6px;border-radius:6px;pointer-events:none;border:1px solid var(--line)}
   .addr-in{
     flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-sm);
     padding:11px 13px;font-size:15px;font-family:inherit;color:var(--ink);outline:none;box-shadow:0 1px 3px rgba(42,35,32,.06)
@@ -94,12 +121,12 @@
   }
   body.about #aboutwrap{display:block}
   body.about #map{visibility:hidden}
-  .about-body{max-width:640px;margin:0 auto;font-size:14px;line-height:1.65;color:#4a4a44}
-  .about-body h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;margin:6px 0 4px;color:#2c2c28}
-  .about-body h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:15px;margin:22px 0 6px;color:#2c2c28}
+  .about-body{max-width:640px;margin:0 auto;font-size:14px;line-height:1.65;color:var(--ink)}
+  .about-body h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;margin:6px 0 4px;color:var(--ink)}
+  .about-body h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:15px;margin:22px 0 6px;color:var(--ink)}
   .about-body p{margin:0 0 10px}
   .about-body a{color:var(--accent);text-decoration:underline}
-  .about-lead{font-size:15px;color:#2c2c28}
+  .about-lead{font-size:15px;color:var(--ink)}
   .about-ver{margin-top:26px;font-size:12px;color:var(--soft)}
   .hist-head{margin:2px 2px 14px}
   .hist-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em}
@@ -138,6 +165,25 @@
   .d-ul li{font-size:13px;color:var(--ink);line-height:1.5;margin-bottom:3px}
   .d-sub{font-size:12px;font-weight:800;color:var(--sage);text-transform:uppercase;letter-spacing:.03em;margin:11px 0 3px}
   .d-p{font-size:13.5px;color:var(--ink);line-height:1.55;margin:0 0 6px}
+  .theme-row{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 20px}
+  .theme-btn{display:flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+  .theme-btn .sw{width:15px;height:15px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+  .theme-btn.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+  @media (max-width:480px){
+    #sheet{padding:6px 14px calc(env(safe-area-inset-bottom) + 14px);max-height:86vh}
+    .sh-name{font-size:18px;margin-right:60px}
+    .sh-addr{font-size:12.5px}
+    .avail-grid{gap:5px}
+    .av{font-size:11px;padding:3px 7px}
+    .svc-line,.d-val,.d-p{font-size:12.5px}
+    .d-lbl,.avail-head{font-size:10.5px}
+    .act{font-size:12px;padding:9px 8px}
+    .details-btn{font-size:13px;padding:10px}
+    .status-row button{font-size:12px;padding:8px 4px}
+    .d-ul li{font-size:12.5px}
+    .lbl{font-size:11.5px}
+    .note-in{font-size:13px}
+  }
 
   .lcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:11px;box-shadow:0 1px 2px rgba(42,35,32,.04);cursor:pointer}
   .lcard.fav{border-color:var(--accent)}
@@ -158,13 +204,14 @@
     position:fixed;left:0;right:0;bottom:0;z-index:1500;background:var(--card);
     border-radius:20px 20px 0 0;box-shadow:0 -6px 24px rgba(42,35,32,.18);
     transform:translateY(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
-    padding:8px 18px calc(env(safe-area-inset-bottom) + 20px);max-height:82vh;overflow-y:auto;perspective:1600px
+    padding:8px 18px calc(env(safe-area-inset-bottom) + 16px);max-height:82vh;
+    display:flex;flex-direction:column;overflow:hidden;perspective:1600px
   }
   #sheet.show{transform:translateY(0)}
   #sheet.floating{
     left:16px; top:88px; right:auto; bottom:auto;
     width:370px; height:470px; min-width:270px; min-height:210px; max-width:94vw; max-height:88vh;
-    border-radius:16px; transform:none; resize:both; overflow:auto;
+    border-radius:16px; transform:none; resize:both; overflow:hidden;
     box-shadow:0 10px 34px rgba(42,35,32,.3)
   }
   #sheet.floating .grip{cursor:move;width:64px;height:5px;background:var(--soft);opacity:.45}
@@ -177,7 +224,7 @@
   .tag{font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
   .tag.type{background:#E4EAE2;color:var(--sage)}
   .sh-addr{color:var(--soft);font-size:13.5px;margin-bottom:4px;line-height:1.45}
-  .flip-wrap{transform-origin:center center;backface-visibility:hidden;will-change:transform}
+  .flip-wrap{transform-origin:center center;backface-visibility:hidden;will-change:transform;flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .avail{background:var(--paper);border-radius:12px;padding:9px 11px;margin:6px 0 10px}
   .avail-head{font-size:11.5px;font-weight:800;color:var(--sage);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .avail-date{font-weight:500;text-transform:none;letter-spacing:0;color:var(--soft);font-size:11px}
@@ -260,6 +307,7 @@
     <input class="addr-in" id="addr" placeholder="Enter your home address…" autocomplete="off" enterkeyhint="search">
     <button class="btn solid" id="locateBtn">Find</button>
     <button class="btn" id="gpsBtn" title="Use my location">◎</button>
+    <div id="addrSuggest" class="addr-suggest"></div>
   </div>
   <div class="radius-row" id="radiusRow">
     <span style="font-size:12px;color:var(--soft)">Radius</span>
@@ -268,7 +316,8 @@
     <span class="radius-count" id="radiusCount"></span>
   </div>
   <div class="mapchips" id="mapChips"></div>
-  <div class="hint" id="hint">◉ Enter your home address above, then a ring shows the daycares nearest you · tap a green dot for its call card</div>
+  <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
+  <div class="ver-badge" id="verBadge">v20</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -315,6 +364,15 @@
   <div class="about-body">
     <h2>About Daycare Map</h2>
     <p class="about-lead">A free tool to help Saskatchewan families find regulated child care and keep track of who they've contacted.</p>
+
+    <h3>Colour theme</h3>
+    <div class="theme-row" id="themeRow">
+      <button data-theme="basic" class="theme-btn"><span class="sw" style="background:#5B96A9"></span>Basic</button>
+      <button data-theme="spring" class="theme-btn"><span class="sw" style="background:#E8865E"></span>Spring</button>
+      <button data-theme="summer" class="theme-btn"><span class="sw" style="background:#6E8FB8"></span>Summer</button>
+      <button data-theme="autumn" class="theme-btn"><span class="sw" style="background:#B5703B"></span>Autumn</button>
+      <button data-theme="winter" class="theme-btn"><span class="sw" style="background:#2F6D9E"></span>Winter</button>
+    </div>
 
     <h3>Where the information comes from</h3>
     <p>Listings are compiled from publicly available sources — the Government of Saskatchewan's regulated child care registry and Saskatchewan 211 (parentcentral.sk.211.ca). This app reproduces that information to make it easier to search and organize; it does not create or independently verify it.</p>
@@ -1786,15 +1844,16 @@ function initMap(){
     // Tap near a daycare dot to open its card. We hit-test against the dots
     // ourselves, which is far more reliable than canvas marker clicks.
     map.on("click", function(e){
-      const cp=e.containerPoint; let best=null, bestD=22;
+      hideSuggest(); const cp=e.containerPoint; let best=null, bestD=22;
       for(const p of places){
         if(!p.marker || !geo[p.addr]) continue;
-        if(!passes(p)) continue;
+        if(!passes(p,true)) continue;
         const pt=map.latLngToContainerPoint(geo[p.addr]);
         const d=cp.distanceTo(pt);
         if(d<bestD){ bestD=d; best=p; }
       }
-      if(best) openSheet(best);
+      if(best){ openSheet(best); }
+      else { setHome([e.latlng.lat,e.latlng.lng],false); toast("Home set here — drag the radius to adjust"); }
     });
     mapReady=true;
   }catch(err){ mapReady=false; }
@@ -1814,7 +1873,7 @@ function refreshMarker(p){
   if(!p.marker) return;
   const status=(marks[p.id]&&marks[p.id].status)||"todo";
   const fav=!!(marks[p.id]&&marks[p.id].fav);
-  if(!passes(p)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
+  if(!passes(p,true)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
   const inR = home && geo[p.addr] ? dist(home,geo[p.addr])<=radiusKm : true;
   p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7});
 }
@@ -1902,20 +1961,26 @@ function drawRing(){
 function updateRadiusCount(){
   const el=document.getElementById("radiusCount");
   if(!home){ el.textContent=""; return; }
-  let n=0; places.forEach(p=>{ if(passes(p)&&geo[p.addr]&&dist(home,geo[p.addr])<=radiusKm) n++; });
+  let n=0; places.forEach(p=>{ if(passes(p,true)&&geo[p.addr]&&dist(home,geo[p.addr])<=radiusKm) n++; });
   el.textContent="· "+n+" near you";
 }
 
 /* ---------- geocoding queue ---------- */
 let queue=[], busy=false, done=0, target=0;
 async function geocode(q){
-  const url="https://photon.komoot.io/api/?limit=1&lang=en&lat=52.13&lon=-106.67&q="+encodeURIComponent(q+", Saskatchewan, Canada");
-  const res=await fetch(url,{headers:{"Accept":"application/json"}});
-  if(!res.ok) throw new Error("http "+res.status);
-  const j=await res.json();
-  if(!j.features||!j.features.length) throw new Error("empty");
-  const c=j.features[0].geometry.coordinates;
-  return [c[1],c[0]];
+  // 1) Photon
+  try{
+    const url="https://photon.komoot.io/api/?limit=1&lang=en&lat=52.13&lon=-106.67&q="+encodeURIComponent(q);
+    const res=await fetch(url,{headers:{"Accept":"application/json"}});
+    if(res.ok){ const j=await res.json(); if(j.features&&j.features.length){ const c=j.features[0].geometry.coordinates; return [c[1],c[0]]; } }
+  }catch(e){}
+  // 2) Nominatim fallback (better at exact street addresses)
+  const url2="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=ca&q="+encodeURIComponent(q);
+  const res2=await fetch(url2,{headers:{"Accept":"application/json"}});
+  if(!res2.ok) throw new Error("http "+res2.status);
+  const j2=await res2.json();
+  if(!j2.length) throw new Error("empty");
+  return [parseFloat(j2[0].lat), parseFloat(j2[0].lon)];
 }
 function startGeocoding(){
   if(!mapReady) return;   // list works without coordinates; only geocode when a map exists
@@ -2196,14 +2261,14 @@ function renderBand(){
   if(!tracked) band.innerHTML='<div style="font-size:11.5px;color:var(--soft)">Mark daycares Called / Waitlist / Full and your progress fills in here.</div>';
   document.getElementById("count").textContent=called+" called · "+wait+" waitlist"+(wait===1?"":"s");
 }
-function passes(p){
+function passes(p, ignoreQuery){
   if(filters.type.size&&!p.types.some(t=>filters.type.has(t))) return false;
   if(filters.infant&&p.hasAgeInfo&&!p.infant) return false;
   if(filters.age18k&&p.hasAgeInfo&&!p.age18k) return false;
   if(filters.exthrs&&!p.exthrs) return false;
   if(filters.fav&&!(marks[p.id]&&marks[p.id].fav)) return false;
   if(filters.tocall&&marks[p.id]&&marks[p.id].status!=="todo") return false;
-  if(filters.q){ if(!(p.name+" "+p.addr).toLowerCase().includes(filters.q)) return false; }
+  if(!ignoreQuery && filters.q){ if(!(p.name+" "+p.addr).toLowerCase().includes(filters.q)) return false; }
   return true;
 }
 function renderList(){
@@ -2338,16 +2403,58 @@ document.getElementById("radius").oninput=e=>{
   drawRing(); refreshAllMarkers(); updateRadiusCount(); saveHome();
 };
 document.getElementById("locateBtn").onclick=doGeocodeAddress;
-document.getElementById("addr").addEventListener("keydown",e=>{ if(e.key==="Enter") doGeocodeAddress(); });
-async function doGeocodeAddress(){
-  const q=document.getElementById("addr").value.trim();
-  if(!q){ toast("Type your address first"); return; }
-  const btn=document.getElementById("locateBtn"); const old=btn.textContent; btn.textContent="…";
+document.getElementById("addr").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("addr").blur(); doGeocodeAddress(); } });
+document.getElementById("addr").addEventListener("search",doGeocodeAddress);
+document.getElementById("addr").addEventListener("input",hideSuggest);
+function buildQuery(raw){
+  const r=raw.trim();
+  if(/canada/i.test(r)) return r;
+  if(/,/.test(r) || /\bsask/i.test(r) || /\bsk\b/i.test(r)) return r+", Canada";
+  if(/^\s*\d/.test(r)) return r+", Saskatoon, Saskatchewan, Canada";   // street number → assume Saskatoon
+  return r+", Saskatchewan, Canada";                                    // place/town name → province-wide
+}
+function fmtPhoton(f){
+  if(!f||!f.geometry||!f.geometry.coordinates) return null;
+  const p=f.properties||{}, c=f.geometry.coordinates;
+  const line1=[p.housenumber,p.street].filter(Boolean).join(" ");
+  const nm=(p.name&&p.name!==p.street)?p.name:"";
+  const city=p.city||p.town||p.village||p.locality||p.county||p.district||"";
+  const parts=[line1||nm,(line1&&nm)?nm:"",city,p.state].filter(Boolean);
+  const seen=new Set(); const label=parts.filter(x=>{const k=String(x).trim().toLowerCase(); if(!k||seen.has(k))return false; seen.add(k); return true;}).join(", ");
+  return { label: label||p.name||"(location)", lat:c[1], lon:c[0] };
+}
+async function geocodeSuggest(raw){
+  const q=buildQuery(raw);
   try{
-    const c=await geocode(q.match(/sask|sk|canada/i)?q:q+", Saskatoon, SK");
-    setHome(c,true); toast("Home set");
-  }catch(err){ toast("Couldn't find that — try tapping the map"); }
+    const url="https://photon.komoot.io/api/?limit=6&lang=en&lat=52.13&lon=-106.67&q="+encodeURIComponent(q);
+    const res=await fetch(url,{headers:{"Accept":"application/json"}});
+    if(res.ok){ const j=await res.json(); const out=((j&&j.features)||[]).map(fmtPhoton).filter(Boolean); if(out.length) return out; }
+  }catch(e){}
+  try{
+    const url2="https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=6&countrycodes=ca&q="+encodeURIComponent(q);
+    const res2=await fetch(url2,{headers:{"Accept":"application/json"}});
+    if(res2.ok){ const j2=await res2.json(); return (j2||[]).map(r=>({ label:String(r.display_name||"").replace(/,\s*Canada$/,""), lat:+r.lat, lon:+r.lon })); }
+  }catch(e){}
+  return [];
+}
+function hideSuggest(){ const b=document.getElementById("addrSuggest"); if(b){ b.classList.remove("show"); b.innerHTML=""; } }
+function pickSuggest(lat,lon,label){ setHome([lat,lon],true); if(label) document.getElementById("addr").value=label; hideSuggest(); toast("Home set"); }
+function showSuggest(cands){
+  const box=document.getElementById("addrSuggest"); if(!box) return;
+  const rows=cands.slice(0,6).map(c=>'<button class="sg-item" data-lat="'+c.lat+'" data-lon="'+c.lon+'">'+esc(c.label)+'</button>').join("");
+  box.innerHTML='<div class="sg-head">Did you mean — tap to set home</div>'+rows;
+  box.querySelectorAll(".sg-item").forEach(b=>{ b.onclick=()=>pickSuggest(+b.dataset.lat,+b.dataset.lon,b.textContent); });
+  box.classList.add("show");
+}
+async function doGeocodeAddress(){
+  const raw=document.getElementById("addr").value.trim();
+  if(!raw){ toast("Type your address first"); return; }
+  const btn=document.getElementById("locateBtn"); const old=btn.textContent; btn.textContent="…";
+  let cands=[]; try{ cands=await geocodeSuggest(raw); }catch(e){}
   btn.textContent=old;
+  if(!cands.length){ hideSuggest(); toast("Couldn't find that — try adding the town name, or tap the map"); return; }
+  if(cands.length===1){ pickSuggest(cands[0].lat,cands[0].lon,cands[0].label); return; }
+  showSuggest(cands);
 }
 document.getElementById("gpsBtn").onclick=()=>{
   if(!navigator.geolocation){ toast("Location not available — tap the map instead"); return; }
@@ -2365,9 +2472,21 @@ function toast(msg){
   clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),2200);
 }
 
+/* ---------- colour theme ---------- */
+function applyTheme(t){
+  if(t&&t!=="basic") document.body.setAttribute("data-theme",t); else document.body.removeAttribute("data-theme");
+  try{ localStorage.setItem("dcTheme",t||"basic"); }catch(e){}
+  document.querySelectorAll("#themeRow .theme-btn").forEach(b=>b.classList.toggle("on",(b.dataset.theme===(t||"basic"))));
+}
+(function initTheme(){
+  let saved="basic"; try{ saved=localStorage.getItem("dcTheme")||"basic"; }catch(e){}
+  applyTheme(saved);
+  document.querySelectorAll("#themeRow .theme-btn").forEach(b=>{ b.onclick=()=>applyTheme(b.dataset.theme); });
+})();
+
 /* ---------- boot ---------- */
 (async ()=>{
-  console.log("Daycare Map — build v16 (full 211 + structured descriptions)");
+  console.log("Daycare Map — build v20 (address suggestions + version badge)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
