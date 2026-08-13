@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>EZ Daycare Locator — Saskatchewan Daycare Finder</title>
+<title>Discover Daycare — Saskatchewan Daycare Finder</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -265,7 +265,7 @@
   .sh-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
   body:not(.list):not(.hist):not(.wait):not(.about) #mapBtn{display:none}
   .tag.reg{background:var(--accent-soft);color:var(--accent);font-weight:700}
-  #sheet.minimized{max-height:58px;overflow:hidden;cursor:pointer;padding-top:14px}
+  #sheet.minimized{max-height:96px;overflow:hidden;cursor:pointer;padding-top:14px}
   #sheet.minimized .grip{display:none}
   #sheet.minimized .flip-wrap{overflow:hidden;pointer-events:none}
   #sheet.minimized .sh-name{margin:0 78px 0 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -306,7 +306,7 @@
 
 <div id="topbar">
   <div class="bar-row1">
-    <div class="brand">EZ Daycare Locator<small>Saskatchewan Daycare Finder</small></div>
+    <div class="brand">Discover Daycare<small>Saskatchewan Daycare Finder</small></div>
     <div class="seg">
       <button id="tabMap" class="on">Map</button>
       <button id="tabList">List</button>
@@ -329,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v24</div>
+  <div class="ver-badge" id="verBadge">v25</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -2524,9 +2524,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="24";
+  const APP_VER="25";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (minimize card + rename + regulated badge)");
+  console.log("Daycare Map — build v"+APP_VER+" (Discover Daycare + taller minimized card)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
