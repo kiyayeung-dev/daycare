@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>Daycare Map — Saskatoon</title>
+<title>EZ Daycare Locator — Saskatchewan Daycare Finder</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -37,6 +37,11 @@
     --paper:#1E3A5C; --card:#294B71; --ink:#EAF2FA; --soft:#A6C0D8; --line:#3A587C;
     --accent:#7FB0D6; --accent-soft:#33557C; --sage:#9FC0DC;
     --st-todo:#8AA6C0; --st-called:#E0A94E; --st-wait:#7FB0D6; --st-full:#E27A6A;
+  }
+  body[data-theme="dark"]{
+    --paper:#15181D; --card:#20252D; --ink:#E9EDF1; --soft:#98A2AE; --line:#2E353F;
+    --accent:#7FB3DE; --accent-soft:#283544; --sage:#8FBCA8;
+    --st-todo:#8A93A0; --st-called:#E0A94E; --st-wait:#7FB3DE; --st-full:#E27A6A;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%;overflow:hidden}
@@ -258,6 +263,12 @@
   .rb-d{color:var(--soft);font-family:"IBM Plex Mono",monospace;font-size:12px;margin-left:auto}
   .rb-hint{font-size:12.5px;color:var(--soft);line-height:1.45}
   .sh-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  body:not(.list):not(.hist):not(.wait):not(.about) #mapBtn{display:none}
+  .tag.reg{background:var(--accent-soft);color:var(--accent);font-weight:700}
+  #sheet.minimized{max-height:58px;overflow:hidden;cursor:pointer;padding-top:14px}
+  #sheet.minimized .grip{display:none}
+  #sheet.minimized .flip-wrap{overflow:hidden;pointer-events:none}
+  #sheet.minimized .sh-name{margin:0 78px 0 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .act{display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper)}
   .act:active{transform:scale(.97)}
   .act.call{background:var(--sage);color:#fff;border-color:var(--sage)}
@@ -295,7 +306,7 @@
 
 <div id="topbar">
   <div class="bar-row1">
-    <div class="brand">Daycare Map<small>Saskatoon · Call Tracker</small></div>
+    <div class="brand">EZ Daycare Locator<small>Saskatchewan Daycare Finder</small></div>
     <div class="seg">
       <button id="tabMap" class="on">Map</button>
       <button id="tabList">List</button>
@@ -318,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v21</div>
+  <div class="ver-badge" id="verBadge">v24</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -369,10 +380,11 @@
     <h3>Colour theme</h3>
     <div class="theme-row" id="themeRow">
       <button data-theme="basic" class="theme-btn"><span class="sw" style="background:#5B96A9"></span>Basic</button>
-      <button data-theme="spring" class="theme-btn"><span class="sw" style="background:#E8865E"></span>Spring</button>
-      <button data-theme="summer" class="theme-btn"><span class="sw" style="background:#6E8FB8"></span>Summer</button>
+      <button data-theme="spring" class="theme-btn"><span class="sw" style="background:#D77A9A"></span>Spring</button>
+      <button data-theme="summer" class="theme-btn"><span class="sw" style="background:#6E8B47"></span>Summer</button>
       <button data-theme="autumn" class="theme-btn"><span class="sw" style="background:#B5703B"></span>Autumn</button>
       <button data-theme="winter" class="theme-btn"><span class="sw" style="background:#2F6D9E"></span>Winter</button>
+      <button data-theme="dark" class="theme-btn"><span class="sw" style="background:#20252D"></span>Dark</button>
     </div>
 
     <h3>Where the information comes from</h3>
@@ -2039,13 +2051,14 @@ function renderFront(p){
 
   wrap.innerHTML='<div class="face">'
     +'<h2 class="sh-name">'+esc(p.name)+'</h2>'
-    +((typeTags+attrTags)?'<div class="sh-tags">'+typeTags+attrTags+'</div>':"")
+    +'<div class="sh-tags"><span class="tag reg">✓ Regulated</span>'+typeTags+attrTags+'</div>'
     +'<div class="sh-addr">'+esc(p.addr)+'</div>'
     +availHtml(d)
     +svcLine
     +routeHtml
     +'<div class="sh-actions">'
       +'<a class="act call" href="'+tel(p.phone)+'">✆ '+esc(p.phone)+'</a>'
+      +'<button class="act" id="mapBtn">📍 Map</button>'
       +'<a class="act" href="'+streetView(p)+'" target="_blank" rel="noopener">◉ Street view</a>'
       +'<a class="act" href="https://maps.google.com/maps?saddr=&daddr='+encodeURIComponent(p.addr)+'" target="_blank" rel="noopener">➤ Directions</a>'
     +'</div>'
@@ -2078,6 +2091,7 @@ function renderFront(p){
   const ta=document.getElementById("noteIn"), ns=document.getElementById("noteStatus"); let nsTimer;
   ta.oninput=function(){ const mm=mk(p.id); mm.note=ta.value; saveMarks(); if(ns){ ns.textContent="saving…"; clearTimeout(nsTimer); nsTimer=setTimeout(function(){ ns.textContent="saved ✓"; },500); } };
   const db=document.getElementById("detailsBtn"); if(db) db.onclick=function(){ flipSheet(p,true); };
+  const mb=document.getElementById("mapBtn"); if(mb) mb.onclick=function(){ seeOnMap(p); };
   if(home && geo[p.addr] && mapReady) setTimeout(function(){ showRoutes(p); },40);
 }
 
@@ -2147,7 +2161,7 @@ function openSheet(p){
     +'<div class="flip-wrap" id="flipWrap"></div>';
   sheet.querySelector(".sh-close").onclick=closeSheet;
   const pop=document.getElementById("popBtn");
-  if(pop){ pop.textContent=sheet.classList.contains("floating")?"▣":"⤢"; pop.onclick=toggleFloat; }
+  if(pop){ pop.onclick=toggleFloat; updatePopIcon(); }
   const gripEl=sheet.querySelector(".grip");
   if(gripEl){ gripEl.addEventListener("mousedown",startDrag); gripEl.addEventListener("touchstart",startDrag,{passive:false}); }
   renderFront(p);
@@ -2166,6 +2180,11 @@ function renderTimeline(p){
 
 function closeSheet(){ clearRoutes(); scrim.classList.remove("show"); sheet.classList.remove("show","floating"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
 scrim.onclick=closeSheet;
+sheet.addEventListener("click",function(e){
+  if(sheet.classList.contains("minimized") && !(e.target.closest&&(e.target.closest(".sh-close")||e.target.closest(".sh-pop")))){
+    sheet.classList.remove("minimized","floating"); clearFloatPos(); scrim.classList.add("show"); updatePopIcon();
+  }
+});
 
 /* ---------- floating / draggable card ---------- */
 let dragging=false, dOffX=0, dOffY=0;
@@ -2190,18 +2209,32 @@ document.addEventListener("mousemove",onDragMove);
 document.addEventListener("mouseup",onDragEnd);
 document.addEventListener("touchmove",onDragMove,{passive:false});
 document.addEventListener("touchend",onDragEnd);
+function clearFloatPos(){ sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
+function updatePopIcon(){
+  const pb=document.getElementById("popBtn"); if(!pb) return;
+  const s=sheet.classList;
+  if(s.contains("minimized")){ pb.textContent="▣"; pb.title="Dock"; }
+  else if(s.contains("floating")){ pb.textContent="‒"; pb.title="Minimize to name"; }
+  else { pb.textContent="⤢"; pb.title="Pop out"; }
+}
 function toggleFloat(){
-  const f=sheet.classList.toggle("floating");
-  const pb=document.getElementById("popBtn");
-  if(f){
-    scrim.classList.remove("show");
-    if(!sheet.style.left){ sheet.style.left="16px"; sheet.style.top="88px"; sheet.style.right="auto"; sheet.style.bottom="auto"; }
-    if(pb){ pb.textContent="▣"; pb.title="Dock to bottom"; }
-  } else {
-    sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height="";
-    scrim.classList.add("show");
-    if(pb){ pb.textContent="⤢"; pb.title="Pop out (movable, resizable)"; }
-  }
+  const s=sheet.classList;
+  if(s.contains("minimized")){ s.remove("minimized","floating"); clearFloatPos(); scrim.classList.add("show"); }
+  else if(s.contains("floating")){ s.remove("floating"); s.add("minimized"); clearFloatPos(); scrim.classList.remove("show"); }
+  else { s.add("floating"); scrim.classList.remove("show"); if(!sheet.style.left){ sheet.style.left="16px"; sheet.style.top="88px"; sheet.style.right="auto"; sheet.style.bottom="auto"; } }
+  updatePopIcon();
+}
+function seeOnMap(p){
+  const c=geo[p.addr];
+  showMap();
+  sheet.classList.remove("floating"); sheet.classList.add("minimized"); clearFloatPos(); scrim.classList.remove("show"); updatePopIcon();
+  setTimeout(()=>{
+    if(!c){ toast("Still locating this one — give it a moment"); return; }
+    try{
+      if(home) map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,110],paddingBottomRight:[40,90]});
+      else map.setView(c,14);
+    }catch(e){}
+  },130);
 }
 function focusOnMap(p){
   showMap();
@@ -2301,7 +2334,7 @@ function renderList(){
         <button class="lc-heart ${m.fav?"on":""}" aria-label="Save">${m.fav?"♥":"♡"}</button>
       </div>
       <div class="lc-meta">${distPill}${stPill}${typeTag}${ageNote}${when}</div>`;
-    card.onclick=()=>focusOnMap(p);
+    card.onclick=()=>openSheet(p);
     const hb=card.querySelector(".lc-heart");
     hb.onclick=(ev)=>{ ev.stopPropagation(); const mm=mk(p.id); mm.fav=!mm.fav; saveMarks(); hb.classList.toggle("on",mm.fav); hb.textContent=mm.fav?"♥":"♡"; card.classList.toggle("fav",mm.fav); refreshMarker(p); };
     list.appendChild(card);
@@ -2491,9 +2524,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="21";
+  const APP_VER="24";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (drag + tab fixes + colour tweaks)");
+  console.log("Daycare Map — build v"+APP_VER+" (minimize card + rename + regulated badge)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
