@@ -265,10 +265,10 @@
   .sh-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
   body:not(.list):not(.hist):not(.wait):not(.about) #mapBtn{display:none}
   .tag.reg{background:var(--accent-soft);color:var(--accent);font-weight:700}
-  #sheet.minimized{max-height:96px;overflow:hidden;cursor:pointer;padding-top:14px}
+  #sheet.minimized{max-height:120px;overflow:hidden;cursor:pointer;padding-top:16px}
   #sheet.minimized .grip{display:none}
   #sheet.minimized .flip-wrap{overflow:hidden;pointer-events:none}
-  #sheet.minimized .sh-name{margin:0 78px 0 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #sheet.minimized .sh-name{margin:0 86px 4px 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .act{display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper)}
   .act:active{transform:scale(.97)}
   .act.call{background:var(--sage);color:#fff;border-color:var(--sage)}
@@ -329,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v25</div>
+  <div class="ver-badge" id="verBadge">v26</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -2334,7 +2334,7 @@ function renderList(){
         <button class="lc-heart ${m.fav?"on":""}" aria-label="Save">${m.fav?"♥":"♡"}</button>
       </div>
       <div class="lc-meta">${distPill}${stPill}${typeTag}${ageNote}${when}</div>`;
-    card.onclick=()=>openSheet(p);
+    card.onclick=()=>{ openSheet(p); seeOnMap(p); };
     const hb=card.querySelector(".lc-heart");
     hb.onclick=(ev)=>{ ev.stopPropagation(); const mm=mk(p.id); mm.fav=!mm.fav; saveMarks(); hb.classList.toggle("on",mm.fav); hb.textContent=mm.fav?"♥":"♡"; card.classList.toggle("fav",mm.fav); refreshMarker(p); };
     list.appendChild(card);
@@ -2524,9 +2524,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="25";
+  const APP_VER="26";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (Discover Daycare + taller minimized card)");
+  console.log("Daycare Map — build v"+APP_VER+" (list->map minimized + taller card)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
