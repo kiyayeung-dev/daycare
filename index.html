@@ -14,34 +14,34 @@
   :root{
     --paper:#FFFFFF; --card:#F7F3EA; --ink:#2C2A28; --soft:#8C877F; --line:#ECE6DA;
     --accent:#5B96A9; --accent-soft:#CDE8E6; --sage:#5B96A9;
-    --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#5F7161; --st-full:#A6503F;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
     --radius:14px; --radius-sm:10px;
     --bar-h:0px;
   }
   body[data-theme="spring"]{
     --paper:#FBE0E8; --card:#FFF0F5; --ink:#4A2E38; --soft:#A2808E; --line:#F3D2DE;
     --accent:#D77A9A; --accent-soft:#F7DCE6; --sage:#C58AA4;
-    --st-todo:#CBBAC2; --st-called:#D89B34; --st-wait:#C58AA4; --st-full:#C15C7A;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
   }
   body[data-theme="summer"]{
     --paper:#CBD8AC; --card:#E6EDD4; --ink:#33402A; --soft:#7A8862; --line:#BECC9E;
     --accent:#6E8B47; --accent-soft:#DCE6C6; --sage:#6E8B47;
-    --st-todo:#AAB78E; --st-called:#C68A3A; --st-wait:#6E8B47; --st-full:#B0603F;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
   }
   body[data-theme="autumn"]{
     --paper:#6E3521; --card:#864729; --ink:#F6E7D8; --soft:#D6B79C; --line:#95553A;
     --accent:#E7A650; --accent-soft:#59301E; --sage:#D89B4C;
-    --st-todo:#C8A98E; --st-called:#E7A650; --st-wait:#D89B4C; --st-full:#EB7550;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
   }
   body[data-theme="winter"]{
     --paper:#1E3A5C; --card:#294B71; --ink:#EAF2FA; --soft:#A6C0D8; --line:#3A587C;
     --accent:#7FB0D6; --accent-soft:#33557C; --sage:#9FC0DC;
-    --st-todo:#8AA6C0; --st-called:#E0A94E; --st-wait:#7FB0D6; --st-full:#E27A6A;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
   }
   body[data-theme="dark"]{
     --paper:#15181D; --card:#20252D; --ink:#E9EDF1; --soft:#98A2AE; --line:#2E353F;
     --accent:#7FB3DE; --accent-soft:#283544; --sage:#8FBCA8;
-    --st-todo:#8A93A0; --st-called:#E0A94E; --st-wait:#7FB3DE; --st-full:#E27A6A;
+    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%;overflow:hidden}
@@ -197,8 +197,8 @@
   .lc-meta{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
   .pill{font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
   .pill.st-called{background:#F6E3BE;color:#7a5410}
-  .pill.st-waitlist{background:#DCE4DA;color:#3f5142}
-  .pill.st-full{background:#EEDAD5;color:#7a382b}
+  .pill.st-waitlist{background:#D6E4F7;color:#1C4E8A}
+  .pill.st-full{background:#F2D6DE;color:#8A1E3D}
   .pill.dist{background:#E4EAE2;color:var(--sage)}
   .lc-when{font-size:11.5px;color:var(--soft)}
 
@@ -287,7 +287,7 @@
   .note-in{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-sm);padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);resize:vertical;min-height:70px;outline:none}
   .note-in:focus{border-color:var(--accent);background:var(--card)}
   .note-in::placeholder{color:var(--soft)}
-  .lc-heart{border:none;background:none;font-size:21px;line-height:1;color:var(--st-todo);cursor:pointer;padding:2px 4px;flex-shrink:0}
+  .lc-heart{border:none;background:none;font-size:21px;line-height:1;color:var(--soft);cursor:pointer;padding:2px 4px;flex-shrink:0}
   .lc-heart.on{color:var(--accent)}
   .note-status{font-weight:400;text-transform:none;letter-spacing:0;color:var(--sage);font-size:11px;margin-left:6px}
   .heart-btn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600;color:var(--soft);cursor:pointer;font-family:inherit;display:inline-flex;gap:6px;align-items:center;margin-bottom:14px}
@@ -329,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v29</div>
+  <div class="ver-badge" id="verBadge">v30</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1770,7 +1770,7 @@ const DATA = [
 const TYPES = ["Centre","Home","Group family child care home"];
 const SHORT = {"Centre":"Centre","Home":"Home","Group family child care home":"Group home"};
 const STATES = [["todo","Not called"],["called","Called"],["waitlist","Waitlist"],["full","Full / no"]];
-const ST_COLOR = {todo:"#12B24A",called:"#E8A317",waitlist:"#4F8A6B",full:"#C0392B"};
+const ST_COLOR = {todo:"#12B24A",called:"#D9A404",waitlist:"#2680EB",full:"#A81E3F"};
 
 function idFor(d){ const s=(d.name||"")+"|"+(d.address||""); let h=0; for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; } return "d"+(h>>>0).toString(36); }
 const places = DATA.map((d,i)=>{
@@ -2313,7 +2313,7 @@ function passes(p, ignoreQuery){
 function renderList(){
   renderBand();
   const list=document.getElementById("list");
-  let shown=places.filter(passes);
+  let shown=places.filter(p=>passes(p));
   if(home){ shown=shown.slice().sort((a,b)=>{
     const da=geo[a.addr]?dist(home,geo[a.addr]):9999, db=geo[b.addr]?dist(home,geo[b.addr]):9999; return da-db;
   }); }
@@ -2529,9 +2529,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="29";
+  const APP_VER="30";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (red selected pin + fix map-btn minimize)");
+  console.log("Daycare Map — build v"+APP_VER+" (fix list search + unified status colours)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
