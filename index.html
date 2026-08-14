@@ -329,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v26</div>
+  <div class="ver-badge" id="verBadge">v27</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1951,7 +1951,7 @@ async function showRoutes(p){
     if(walkT) walkT.textContent="~"+Math.max(1,Math.round(km/5*60))+" min";
     if(walkD) walkD.textContent="~"+km.toFixed(1)+" km";
   }
-  try{ map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,95],paddingBottomRight:[40,Math.round(window.innerHeight*0.5)]}); }catch(e){}
+  if(!sheet.classList.contains("minimized")){ try{ map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,95],paddingBottomRight:[40,Math.round(window.innerHeight*0.5)]}); }catch(e){} }
 }
 
 function setHome(latlng,fly){
@@ -2166,7 +2166,7 @@ function openSheet(p){
   if(gripEl){ gripEl.addEventListener("mousedown",startDrag); gripEl.addEventListener("touchstart",startDrag,{passive:false}); }
   renderFront(p);
   sheet.classList.add("show");
-  if(!sheet.classList.contains("floating")) scrim.classList.add("show");
+  if(!sheet.classList.contains("floating") && !sheet.classList.contains("minimized")) scrim.classList.add("show");
 }
 
 function renderTimeline(p){
@@ -2334,7 +2334,7 @@ function renderList(){
         <button class="lc-heart ${m.fav?"on":""}" aria-label="Save">${m.fav?"♥":"♡"}</button>
       </div>
       <div class="lc-meta">${distPill}${stPill}${typeTag}${ageNote}${when}</div>`;
-    card.onclick=()=>{ openSheet(p); seeOnMap(p); };
+    card.onclick=()=>openSheet(p);
     const hb=card.querySelector(".lc-heart");
     hb.onclick=(ev)=>{ ev.stopPropagation(); const mm=mk(p.id); mm.fav=!mm.fav; saveMarks(); hb.classList.toggle("on",mm.fav); hb.textContent=mm.fav?"♥":"♡"; card.classList.toggle("fav",mm.fav); refreshMarker(p); };
     list.appendChild(card);
@@ -2524,9 +2524,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="26";
+  const APP_VER="27";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (list->map minimized + taller card)");
+  console.log("Daycare Map — build v"+APP_VER+" (list stays + minimized map drag fix)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
