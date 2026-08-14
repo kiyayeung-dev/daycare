@@ -72,6 +72,7 @@
   .sg-head{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;padding:9px 14px 4px}
   .sg-item{display:block;width:100%;text-align:left;border:none;background:none;font-family:inherit;font-size:13.5px;color:var(--ink);padding:11px 14px;cursor:pointer;border-top:1px solid var(--line);line-height:1.35}
   .sg-item:active{background:var(--accent-soft)}
+  .hl-dot-inner{width:20px;height:20px;border-radius:50%;background:#FF3B30;border:3px solid #fff;box-shadow:0 0 0 2px rgba(255,59,48,.45),0 2px 6px rgba(0,0,0,.35);box-sizing:border-box;pointer-events:none}
   .ver-badge{position:fixed;left:6px;bottom:calc(env(safe-area-inset-bottom) + 4px);z-index:1400;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--soft);background:var(--card);opacity:.72;padding:2px 6px;border-radius:6px;pointer-events:none;border:1px solid var(--line)}
   .addr-in{
     flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-sm);
@@ -329,7 +330,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v30</div>
+  <div class="ver-badge" id="verBadge">v31</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -348,7 +349,11 @@
       <span><i class="dot" style="background:var(--st-full)"></i>Full / no</span>
     </div>
   </div>
-  <input class="search2" id="search" placeholder="Search by name or address…" autocomplete="off">
+  <div class="addr-row" id="listSearchRow" style="margin:0 0 10px">
+    <input class="addr-in" id="search" placeholder="Search name, town or address…" autocomplete="off" enterkeyhint="search" style="flex:1;margin:0">
+    <button class="btn solid" id="listSearchBtn">Search</button>
+    <div id="listSuggest" class="addr-suggest"></div>
+  </div>
   <div class="chips" id="chips"></div>
   <div id="list"></div>
 </div>
@@ -1885,7 +1890,6 @@ function addMarker(p){
 let hlId=null;
 function refreshMarker(p){
   if(!p.marker) return;
-  if(p.id===hlId){ p.marker.setStyle({fillColor:"#FF3B30", color:"#fff", weight:3, fillOpacity:1, opacity:1, radius:12}); return; }
   const status=(marks[p.id]&&marks[p.id].status)||"todo";
   const fav=!!(marks[p.id]&&marks[p.id].fav);
   if(!passes(p,true)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
@@ -1893,7 +1897,19 @@ function refreshMarker(p){
   p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7, weight:2});
 }
 function refreshAllMarkers(){ places.forEach(refreshMarker); }
-function setHighlight(id){ const old=hlId; hlId=id; places.forEach(p=>{ if(p.id===old||p.id===id) refreshMarker(p); }); }
+let hlMarker=null;
+const HL_ICON=L.divIcon({className:"hl-dot",html:'<div class="hl-dot-inner"></div>',iconSize:[26,26],iconAnchor:[13,13]});
+function setHighlight(id){
+  hlId=id;
+  const p=id?places.find(x=>x.id===id):null;
+  const c=p?geo[p.addr]:null;
+  if(c&&map){
+    if(!hlMarker){ hlMarker=L.marker(c,{icon:HL_ICON,zIndexOffset:3000,interactive:false,keyboard:false}); hlMarker.addTo(map); }
+    else{ hlMarker.setLatLng(c); if(!map.hasLayer(hlMarker)) hlMarker.addTo(map); }
+  } else {
+    if(hlMarker&&map&&map.hasLayer(hlMarker)) map.removeLayer(hlMarker);
+  }
+}
 
 /* ---------- routing (walk = dotted, drive = solid, follows roads) ---------- */
 let routeDrive=null, routeWalk=null;
@@ -2346,7 +2362,39 @@ function renderList(){
   });
   if(truncated){ const n=document.createElement("div"); n.style.cssText="text-align:center;color:var(--soft);padding:16px 4px 4px;font-size:12.5px;line-height:1.5"; n.textContent="Showing nearest "+CAP+" of "+total+" — search or use filters to narrow."; list.appendChild(n); }
 }
-document.getElementById("search").oninput=e=>{ filters.q=e.target.value.trim().toLowerCase(); renderList(); };
+/* ---- list search: live filter + local town/name suggestions + button ---- */
+let _listSug=null;
+function buildListSug(){
+  if(_listSug) return _listSug;
+  const townMap=new Map();
+  places.forEach(p=>{ const t=((p.addr||"").split(",")[1]||"").trim(); if(t){ const k=t.toLowerCase(); if(!townMap.has(k)) townMap.set(k,t); } });
+  _listSug={ towns:[...townMap.values()].map(t=>({label:t+"  ·  town",q:t,key:t.toLowerCase()})),
+             names:places.map(p=>({label:p.name,q:p.name,key:(p.name||"").toLowerCase()})) };
+  return _listSug;
+}
+function _ed(a,b){ const m=a.length,n=b.length; if(Math.abs(m-n)>2) return 3; const d=[]; for(let i=0;i<=m;i++){ d[i]=[i]; } for(let j=0;j<=n;j++){ d[0][j]=j; } for(let i=1;i<=m;i++){ for(let j=1;j<=n;j++){ d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); } } return d[m][n]; }
+function listSuggestions(inp){
+  const q=(inp||"").trim().toLowerCase(); if(q.length<2) return [];
+  const S=buildListSug(); const out=[];
+  S.towns.forEach(t=>{ let s=-1; if(t.key.startsWith(q)) s=0; else if(t.key.includes(q)) s=1; else { const d=_ed(q,t.key); if(d<=2) s=2+d; } if(s>=0) out.push({label:t.label,q:t.q,s:s}); });
+  S.names.forEach(nm=>{ let s=-1; if(nm.key.startsWith(q)) s=0.5; else if(nm.key.includes(q)) s=1.6; if(s>=0) out.push({label:nm.label,q:nm.q,s:s}); });
+  out.sort((a,b)=>a.s-b.s);
+  const seen=new Set(),res=[]; for(const c of out){ const k=c.q.toLowerCase(); if(seen.has(k)) continue; seen.add(k); res.push(c); if(res.length>=7) break; } return res;
+}
+function hideListSuggest(){ const b=document.getElementById("listSuggest"); if(b){ b.classList.remove("show"); b.innerHTML=""; } }
+function showListSuggest(){
+  const box=document.getElementById("listSuggest"); if(!box) return;
+  const cands=listSuggestions(document.getElementById("search").value);
+  if(!cands.length){ hideListSuggest(); return; }
+  box.innerHTML='<div class="sg-head">Did you mean — tap to search</div>'+cands.map((c,i)=>'<button class="sg-item" data-i="'+i+'">'+esc(c.label)+'</button>').join("");
+  box.querySelectorAll(".sg-item").forEach(b=>{ b.onclick=()=>{ applyListSearch(cands[+b.dataset.i].q); }; });
+  box.classList.add("show");
+}
+function listMatchCount(){ return places.filter(p=>passes(p)).length; }
+function applyListSearch(q){ const el=document.getElementById("search"); el.value=q; filters.q=q.trim().toLowerCase(); renderList(); hideListSuggest(); const n=listMatchCount(); toast(n+(n===1?" match":" matches")); }
+document.getElementById("search").oninput=e=>{ filters.q=e.target.value.trim().toLowerCase(); renderList(); showListSuggest(); };
+document.getElementById("search").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("listSearchBtn").click(); } });
+document.getElementById("listSearchBtn").onclick=()=>{ filters.q=document.getElementById("search").value.trim().toLowerCase(); renderList(); hideListSuggest(); const n=listMatchCount(); toast(n+(n===1?" match":" matches")); };
 
 /* ---------- history ---------- */
 function renderHistory(){
@@ -2408,6 +2456,7 @@ function setTab(which, keep){
   const currentlyMap = !document.body.classList.contains("list") && !document.body.classList.contains("hist") && !document.body.classList.contains("wait") && !document.body.classList.contains("about");
   if(currentlyMap && which!=="map" && map){ try{ savedMapView={c:map.getCenter(), z:map.getZoom()}; }catch(e){} }
   if(!keep) closeSheet();
+  hideListSuggest();
   document.body.classList.toggle("list", which==="list");
   document.body.classList.toggle("hist", which==="hist");
   document.body.classList.toggle("wait", which==="wait");
@@ -2529,9 +2578,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="30";
+  const APP_VER="31";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (fix list search + unified status colours)");
+  console.log("Daycare Map — build v"+APP_VER+" (list search button + suggestions + solid red pin)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
