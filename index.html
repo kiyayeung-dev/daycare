@@ -330,7 +330,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v31</div>
+  <div class="ver-badge" id="verBadge">v32</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1894,7 +1894,9 @@ function refreshMarker(p){
   const fav=!!(marks[p.id]&&marks[p.id].fav);
   if(!passes(p,true)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
   const inR = home && geo[p.addr] ? dist(home,geo[p.addr])<=radiusKm : true;
-  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7, weight:2});
+  const marked = status!=="todo";
+  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: marked?10:(fav?9:7), weight:2});
+  if(marked && p.marker.bringToFront) p.marker.bringToFront();
 }
 function refreshAllMarkers(){ places.forEach(refreshMarker); }
 let hlMarker=null;
@@ -2099,7 +2101,7 @@ function renderFront(p){
       if(s==="full") mm.fullAt=Date.now();
       saveMarks();
       wrap.querySelectorAll(".status-row button").forEach(function(x){ x.classList.toggle("sel",x.dataset.s===s); });
-      renderTimeline(p); refreshMarker(p); renderBand();
+      renderTimeline(p); refreshAllMarkers(); renderBand();
       if(document.body.classList.contains("list")) renderList();
       if(document.body.classList.contains("hist")) renderHistory();
       if(document.body.classList.contains("wait")) renderWaitlist();
@@ -2578,9 +2580,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="31";
+  const APP_VER="32";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (list search button + suggestions + solid red pin)");
+  console.log("Daycare Map — build v"+APP_VER+" (marked dots on top so colour always shows)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
