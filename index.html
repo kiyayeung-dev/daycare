@@ -329,7 +329,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v28</div>
+  <div class="ver-badge" id="verBadge">v29</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1882,15 +1882,18 @@ function addMarker(p){
   p.marker=m;
   refreshMarker(p);
 }
+let hlId=null;
 function refreshMarker(p){
   if(!p.marker) return;
+  if(p.id===hlId){ p.marker.setStyle({fillColor:"#FF3B30", color:"#fff", weight:3, fillOpacity:1, opacity:1, radius:12}); return; }
   const status=(marks[p.id]&&marks[p.id].status)||"todo";
   const fav=!!(marks[p.id]&&marks[p.id].fav);
   if(!passes(p,true)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
   const inR = home && geo[p.addr] ? dist(home,geo[p.addr])<=radiusKm : true;
-  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7});
+  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7, weight:2});
 }
 function refreshAllMarkers(){ places.forEach(refreshMarker); }
+function setHighlight(id){ const old=hlId; hlId=id; places.forEach(p=>{ if(p.id===old||p.id===id) refreshMarker(p); }); }
 
 /* ---------- routing (walk = dotted, drive = solid, follows roads) ---------- */
 let routeDrive=null, routeWalk=null;
@@ -2091,7 +2094,7 @@ function renderFront(p){
   const ta=document.getElementById("noteIn"), ns=document.getElementById("noteStatus"); let nsTimer;
   ta.oninput=function(){ const mm=mk(p.id); mm.note=ta.value; saveMarks(); if(ns){ ns.textContent="saving…"; clearTimeout(nsTimer); nsTimer=setTimeout(function(){ ns.textContent="saved ✓"; },500); } };
   const db=document.getElementById("detailsBtn"); if(db) db.onclick=function(){ flipSheet(p,true); };
-  const mb=document.getElementById("mapBtn"); if(mb) mb.onclick=function(){ seeOnMap(p); };
+  const mb=document.getElementById("mapBtn"); if(mb) mb.onclick=function(ev){ if(ev&&ev.stopPropagation) ev.stopPropagation(); seeOnMap(p); };
   if(home && geo[p.addr] && mapReady) setTimeout(function(){ showRoutes(p); },40);
 }
 
@@ -2156,6 +2159,7 @@ function flipSheet(p, toBack){
 function openSheet(p){
   clearRoutes();
   sheet.classList.remove("minimized","floating"); clearFloatPos();
+  setHighlight(p.id);
   sheet.innerHTML='<button class="sh-close" aria-label="Close">✕</button>'
     +'<button class="sh-pop" id="popBtn" title="Pop out (movable, resizable)">⤢</button>'
     +'<div class="grip"></div>'
@@ -2179,7 +2183,7 @@ function renderTimeline(p){
   if(rows){ tl.innerHTML=rows; tl.classList.add("show"); } else { tl.classList.remove("show"); }
 }
 
-function closeSheet(){ clearRoutes(); scrim.classList.remove("show"); sheet.classList.remove("show","floating","minimized"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
+function closeSheet(){ clearRoutes(); setHighlight(null); scrim.classList.remove("show"); sheet.classList.remove("show","floating","minimized"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
 scrim.onclick=closeSheet;
 sheet.addEventListener("click",function(e){
   if(sheet.classList.contains("minimized") && !(e.target.closest&&(e.target.closest(".sh-close")||e.target.closest(".sh-pop")))){
@@ -2525,9 +2529,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="28";
+  const APP_VER="29";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (card always fresh + tab reset)");
+  console.log("Daycare Map — build v"+APP_VER+" (red selected pin + fix map-btn minimize)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
