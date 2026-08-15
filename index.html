@@ -330,7 +330,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v34</div>
+  <div class="ver-badge" id="verBadge">v35</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1914,8 +1914,9 @@ function setHighlight(id){
 }
 
 /* ---------- routing (walk = dotted, drive = solid, follows roads) ---------- */
-let routeDrive=null, routeWalk=null;
+let routeDrive=null, routeWalk=null, routeSeq=0;
 function clearRoutes(){
+  routeSeq++;
   if(routeDrive){ try{map.removeLayer(routeDrive);}catch(e){} routeDrive=null; }
   if(routeWalk){ try{map.removeLayer(routeWalk);}catch(e){} routeWalk=null; }
 }
@@ -1950,10 +1951,12 @@ async function walkRoute(from, to){
 async function showRoutes(p){
   const c=geo[p.addr]; if(!home||!c||!mapReady||!map) return;
   clearRoutes();
+  const seq=routeSeq;
   const walkT=document.getElementById("walkT"), driveT=document.getElementById("driveT"),
         walkD=document.getElementById("walkD"), driveD=document.getElementById("driveD");
   const straight=dist(home,c);
   const [dr, wk]=await Promise.allSettled([osrm("driving",home,c), walkRoute(home,c)]);
+  if(seq!==routeSeq) return;
   // driving (car router — solid line)
   if(dr.status==="fulfilled"){
     const km=dr.value.dist/1000;
@@ -2581,9 +2584,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="34";
+  const APP_VER="35";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (waitlist no longer auto-marks called)");
+  console.log("Daycare Map — build v"+APP_VER+" (fix duplicate map routes + stuck times)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
