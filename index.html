@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>Discover Daycare — Saskatchewan Daycare Finder</title>
+<title>Daycare Map — Saskatoon</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20x%3D%2231%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2262%22%20y%3D%227%22%20width%3D%227%22%20height%3D%2217%22%20rx%3D%223.5%22%20fill%3D%22%235B96A9%22%2F%3E%3Crect%20x%3D%2215%22%20y%3D%2215%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%2213%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%235B96A9%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M18%2031a10%2010%200%200%201%2010-10h44a10%2010%200%200%201%2010%2010v5H18z%22%20fill%3D%22%235B96A9%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2261%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M47%2046q4-5%208-1%22%20fill%3D%22none%22%20stroke%3D%22%23F0A17E%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Ccircle%20cx%3D%2255.5%22%20cy%3D%2259%22%20r%3D%222.4%22%20fill%3D%22%233E6C7A%22%2F%3E%3Cpath%20d%3D%22M45%2066q5%204%2010%200%22%20fill%3D%22none%22%20stroke%3D%22%233E6C7A%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -14,34 +14,29 @@
   :root{
     --paper:#FFFFFF; --card:#F7F3EA; --ink:#2C2A28; --soft:#8C877F; --line:#ECE6DA;
     --accent:#5B96A9; --accent-soft:#CDE8E6; --sage:#5B96A9;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
+    --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#5F7161; --st-full:#A6503F;
     --radius:14px; --radius-sm:10px;
     --bar-h:0px;
   }
   body[data-theme="spring"]{
-    --paper:#FBE0E8; --card:#FFF0F5; --ink:#4A2E38; --soft:#A2808E; --line:#F3D2DE;
-    --accent:#D77A9A; --accent-soft:#F7DCE6; --sage:#C58AA4;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
+    --paper:#FBEEA2; --card:#FFF9DC; --ink:#4A3E1C; --soft:#94874A; --line:#ECD886;
+    --accent:#C35931; --accent-soft:#F7D9C4; --sage:#93A544;
+    --st-todo:#CBBFAE; --st-called:#D89B34; --st-wait:#93A544; --st-full:#C35931;
   }
   body[data-theme="summer"]{
-    --paper:#CBD8AC; --card:#E6EDD4; --ink:#33402A; --soft:#7A8862; --line:#BECC9E;
-    --accent:#6E8B47; --accent-soft:#DCE6C6; --sage:#6E8B47;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
+    --paper:#FADCE6; --card:#FFF1F6; --ink:#3E2E38; --soft:#9E8894; --line:#F1D2DE;
+    --accent:#B87196; --accent-soft:#ECD8E6; --sage:#8E86C0;
+    --st-todo:#C9BCC4; --st-called:#C99BC0; --st-wait:#8E86C0; --st-full:#C77E8E;
   }
   body[data-theme="autumn"]{
     --paper:#6E3521; --card:#864729; --ink:#F6E7D8; --soft:#D6B79C; --line:#95553A;
     --accent:#E7A650; --accent-soft:#59301E; --sage:#D89B4C;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
+    --st-todo:#C8A98E; --st-called:#E7A650; --st-wait:#D89B4C; --st-full:#EB7550;
   }
   body[data-theme="winter"]{
     --paper:#1E3A5C; --card:#294B71; --ink:#EAF2FA; --soft:#A6C0D8; --line:#3A587C;
     --accent:#7FB0D6; --accent-soft:#33557C; --sage:#9FC0DC;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
-  }
-  body[data-theme="dark"]{
-    --paper:#15181D; --card:#20252D; --ink:#E9EDF1; --soft:#98A2AE; --line:#2E353F;
-    --accent:#7FB3DE; --accent-soft:#283544; --sage:#8FBCA8;
-    --st-todo:#12B24A; --st-called:#D9A404; --st-wait:#2680EB; --st-full:#A81E3F;
+    --st-todo:#8AA6C0; --st-called:#E0A94E; --st-wait:#7FB0D6; --st-full:#E27A6A;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%;overflow:hidden}
@@ -72,7 +67,6 @@
   .sg-head{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;padding:9px 14px 4px}
   .sg-item{display:block;width:100%;text-align:left;border:none;background:none;font-family:inherit;font-size:13.5px;color:var(--ink);padding:11px 14px;cursor:pointer;border-top:1px solid var(--line);line-height:1.35}
   .sg-item:active{background:var(--accent-soft)}
-  .hl-dot-inner{width:20px;height:20px;border-radius:50%;background:#FF3B30;border:3px solid #fff;box-shadow:0 0 0 2px rgba(255,59,48,.45),0 2px 6px rgba(0,0,0,.35);box-sizing:border-box;pointer-events:none}
   .ver-badge{position:fixed;left:6px;bottom:calc(env(safe-area-inset-bottom) + 4px);z-index:1400;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--soft);background:var(--card);opacity:.72;padding:2px 6px;border-radius:6px;pointer-events:none;border:1px solid var(--line)}
   .addr-in{
     flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-sm);
@@ -198,8 +192,8 @@
   .lc-meta{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
   .pill{font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
   .pill.st-called{background:#F6E3BE;color:#7a5410}
-  .pill.st-waitlist{background:#D6E4F7;color:#1C4E8A}
-  .pill.st-full{background:#F2D6DE;color:#8A1E3D}
+  .pill.st-waitlist{background:#DCE4DA;color:#3f5142}
+  .pill.st-full{background:#EEDAD5;color:#7a382b}
   .pill.dist{background:#E4EAE2;color:var(--sage)}
   .lc-when{font-size:11.5px;color:var(--soft)}
 
@@ -220,8 +214,7 @@
     border-radius:16px; transform:none; resize:both; overflow:hidden;
     box-shadow:0 10px 34px rgba(42,35,32,.3)
   }
-  #sheet.floating .grip{cursor:move;width:100%;height:26px;background:transparent;opacity:1;margin:0 0 6px;position:relative;touch-action:none}
-  #sheet.floating .grip::after{content:"";position:absolute;left:50%;top:11px;transform:translateX(-50%);width:72px;height:5px;background:var(--soft);opacity:.5;border-radius:99px}
+  #sheet.floating .grip{cursor:move;width:64px;height:5px;background:var(--soft);opacity:.45}
   .sh-pop{position:absolute;top:14px;right:52px;border:none;background:var(--paper);width:30px;height:30px;border-radius:50%;font-size:14px;color:var(--soft);cursor:pointer;line-height:1}
   .sh-pop:active{transform:scale(.94)}
   .grip{width:38px;height:4px;background:var(--line);border-radius:99px;margin:6px auto 12px}
@@ -264,12 +257,6 @@
   .rb-d{color:var(--soft);font-family:"IBM Plex Mono",monospace;font-size:12px;margin-left:auto}
   .rb-hint{font-size:12.5px;color:var(--soft);line-height:1.45}
   .sh-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-  body:not(.list):not(.hist):not(.wait):not(.about) #mapBtn{display:none}
-  .tag.reg{background:var(--accent-soft);color:var(--accent);font-weight:700}
-  #sheet.minimized{max-height:120px;overflow:hidden;cursor:pointer;padding-top:16px}
-  #sheet.minimized .grip{display:none}
-  #sheet.minimized .flip-wrap{overflow:hidden;pointer-events:none}
-  #sheet.minimized .sh-name{margin:0 86px 4px 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .act{display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper)}
   .act:active{transform:scale(.97)}
   .act.call{background:var(--sage);color:#fff;border-color:var(--sage)}
@@ -288,7 +275,7 @@
   .note-in{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-sm);padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);resize:vertical;min-height:70px;outline:none}
   .note-in:focus{border-color:var(--accent);background:var(--card)}
   .note-in::placeholder{color:var(--soft)}
-  .lc-heart{border:none;background:none;font-size:21px;line-height:1;color:var(--soft);cursor:pointer;padding:2px 4px;flex-shrink:0}
+  .lc-heart{border:none;background:none;font-size:21px;line-height:1;color:var(--st-todo);cursor:pointer;padding:2px 4px;flex-shrink:0}
   .lc-heart.on{color:var(--accent)}
   .note-status{font-weight:400;text-transform:none;letter-spacing:0;color:var(--sage);font-size:11px;margin-left:6px}
   .heart-btn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600;color:var(--soft);cursor:pointer;font-family:inherit;display:inline-flex;gap:6px;align-items:center;margin-bottom:14px}
@@ -307,7 +294,7 @@
 
 <div id="topbar">
   <div class="bar-row1">
-    <div class="brand">Discover Daycare<small>Saskatchewan Daycare Finder</small></div>
+    <div class="brand">Daycare Map<small>Saskatoon · Call Tracker</small></div>
     <div class="seg">
       <button id="tabMap" class="on">Map</button>
       <button id="tabList">List</button>
@@ -330,7 +317,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v32</div>
+  <div class="ver-badge" id="verBadge">v20</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -349,11 +336,7 @@
       <span><i class="dot" style="background:var(--st-full)"></i>Full / no</span>
     </div>
   </div>
-  <div class="addr-row" id="listSearchRow" style="margin:0 0 10px">
-    <input class="addr-in" id="search" placeholder="Search name, town or address…" autocomplete="off" enterkeyhint="search" style="flex:1;margin:0">
-    <button class="btn solid" id="listSearchBtn">Search</button>
-    <div id="listSuggest" class="addr-suggest"></div>
-  </div>
+  <input class="search2" id="search" placeholder="Search by name or address…" autocomplete="off">
   <div class="chips" id="chips"></div>
   <div id="list"></div>
 </div>
@@ -385,11 +368,10 @@
     <h3>Colour theme</h3>
     <div class="theme-row" id="themeRow">
       <button data-theme="basic" class="theme-btn"><span class="sw" style="background:#5B96A9"></span>Basic</button>
-      <button data-theme="spring" class="theme-btn"><span class="sw" style="background:#D77A9A"></span>Spring</button>
-      <button data-theme="summer" class="theme-btn"><span class="sw" style="background:#6E8B47"></span>Summer</button>
+      <button data-theme="spring" class="theme-btn"><span class="sw" style="background:#E8865E"></span>Spring</button>
+      <button data-theme="summer" class="theme-btn"><span class="sw" style="background:#6E8FB8"></span>Summer</button>
       <button data-theme="autumn" class="theme-btn"><span class="sw" style="background:#B5703B"></span>Autumn</button>
       <button data-theme="winter" class="theme-btn"><span class="sw" style="background:#2F6D9E"></span>Winter</button>
-      <button data-theme="dark" class="theme-btn"><span class="sw" style="background:#20252D"></span>Dark</button>
     </div>
 
     <h3>Where the information comes from</h3>
@@ -404,7 +386,7 @@
     <h3>Provided "as is"</h3>
     <p>This app is offered for general assistance and informational purposes only, without warranties of any kind, express or implied. It does not constitute professional, legal, medical, or child care advice. To the fullest extent permitted by law, the creator accepts no liability for any loss, cost, or decision arising from use of this app or reliance on the information it displays.</p>
 
-    <p class="about-ver" id="aboutVer">Version 20</p>
+    <p class="about-ver">Version 12</p>
   </div>
 </div>
 
@@ -1775,7 +1757,7 @@ const DATA = [
 const TYPES = ["Centre","Home","Group family child care home"];
 const SHORT = {"Centre":"Centre","Home":"Home","Group family child care home":"Group home"};
 const STATES = [["todo","Not called"],["called","Called"],["waitlist","Waitlist"],["full","Full / no"]];
-const ST_COLOR = {todo:"#12B24A",called:"#D9A404",waitlist:"#2680EB",full:"#A81E3F"};
+const ST_COLOR = {todo:"#12B24A",called:"#E8A317",waitlist:"#4F8A6B",full:"#C0392B"};
 
 function idFor(d){ const s=(d.name||"")+"|"+(d.address||""); let h=0; for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; } return "d"+(h>>>0).toString(36); }
 const places = DATA.map((d,i)=>{
@@ -1887,31 +1869,15 @@ function addMarker(p){
   p.marker=m;
   refreshMarker(p);
 }
-let hlId=null;
 function refreshMarker(p){
   if(!p.marker) return;
   const status=(marks[p.id]&&marks[p.id].status)||"todo";
   const fav=!!(marks[p.id]&&marks[p.id].fav);
   if(!passes(p,true)){ p.marker.setStyle({fillOpacity:0,opacity:0,radius:0}); return; }
   const inR = home && geo[p.addr] ? dist(home,geo[p.addr])<=radiusKm : true;
-  const marked = status!=="todo";
-  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: marked?10:(fav?9:7), weight:2});
-  if(marked && p.marker.bringToFront) p.marker.bringToFront();
+  p.marker.setStyle({fillColor:ST_COLOR[status], fillOpacity:inR?1:0.28, opacity:inR?1:0.45, radius: fav?9:7});
 }
 function refreshAllMarkers(){ places.forEach(refreshMarker); }
-let hlMarker=null;
-const HL_ICON=L.divIcon({className:"hl-dot",html:'<div class="hl-dot-inner"></div>',iconSize:[26,26],iconAnchor:[13,13]});
-function setHighlight(id){
-  hlId=id;
-  const p=id?places.find(x=>x.id===id):null;
-  const c=p?geo[p.addr]:null;
-  if(c&&map){
-    if(!hlMarker){ hlMarker=L.marker(c,{icon:HL_ICON,zIndexOffset:3000,interactive:false,keyboard:false}); hlMarker.addTo(map); }
-    else{ hlMarker.setLatLng(c); if(!map.hasLayer(hlMarker)) hlMarker.addTo(map); }
-  } else {
-    if(hlMarker&&map&&map.hasLayer(hlMarker)) map.removeLayer(hlMarker);
-  }
-}
 
 /* ---------- routing (walk = dotted, drive = solid, follows roads) ---------- */
 let routeDrive=null, routeWalk=null;
@@ -1972,7 +1938,7 @@ async function showRoutes(p){
     if(walkT) walkT.textContent="~"+Math.max(1,Math.round(km/5*60))+" min";
     if(walkD) walkD.textContent="~"+km.toFixed(1)+" km";
   }
-  if(!sheet.classList.contains("minimized")){ try{ map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,95],paddingBottomRight:[40,Math.round(window.innerHeight*0.5)]}); }catch(e){} }
+  try{ map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,95],paddingBottomRight:[40,Math.round(window.innerHeight*0.5)]}); }catch(e){}
 }
 
 function setHome(latlng,fly){
@@ -2072,14 +2038,13 @@ function renderFront(p){
 
   wrap.innerHTML='<div class="face">'
     +'<h2 class="sh-name">'+esc(p.name)+'</h2>'
-    +'<div class="sh-tags"><span class="tag reg">✓ Regulated</span>'+typeTags+attrTags+'</div>'
+    +((typeTags+attrTags)?'<div class="sh-tags">'+typeTags+attrTags+'</div>':"")
     +'<div class="sh-addr">'+esc(p.addr)+'</div>'
     +availHtml(d)
     +svcLine
     +routeHtml
     +'<div class="sh-actions">'
       +'<a class="act call" href="'+tel(p.phone)+'">✆ '+esc(p.phone)+'</a>'
-      +'<button class="act" id="mapBtn">📍 Map</button>'
       +'<a class="act" href="'+streetView(p)+'" target="_blank" rel="noopener">◉ Street view</a>'
       +'<a class="act" href="https://maps.google.com/maps?saddr=&daddr='+encodeURIComponent(p.addr)+'" target="_blank" rel="noopener">➤ Directions</a>'
     +'</div>'
@@ -2101,7 +2066,7 @@ function renderFront(p){
       if(s==="full") mm.fullAt=Date.now();
       saveMarks();
       wrap.querySelectorAll(".status-row button").forEach(function(x){ x.classList.toggle("sel",x.dataset.s===s); });
-      renderTimeline(p); refreshAllMarkers(); renderBand();
+      renderTimeline(p); refreshMarker(p); renderBand();
       if(document.body.classList.contains("list")) renderList();
       if(document.body.classList.contains("hist")) renderHistory();
       if(document.body.classList.contains("wait")) renderWaitlist();
@@ -2112,7 +2077,6 @@ function renderFront(p){
   const ta=document.getElementById("noteIn"), ns=document.getElementById("noteStatus"); let nsTimer;
   ta.oninput=function(){ const mm=mk(p.id); mm.note=ta.value; saveMarks(); if(ns){ ns.textContent="saving…"; clearTimeout(nsTimer); nsTimer=setTimeout(function(){ ns.textContent="saved ✓"; },500); } };
   const db=document.getElementById("detailsBtn"); if(db) db.onclick=function(){ flipSheet(p,true); };
-  const mb=document.getElementById("mapBtn"); if(mb) mb.onclick=function(ev){ if(ev&&ev.stopPropagation) ev.stopPropagation(); seeOnMap(p); };
   if(home && geo[p.addr] && mapReady) setTimeout(function(){ showRoutes(p); },40);
 }
 
@@ -2176,20 +2140,18 @@ function flipSheet(p, toBack){
 
 function openSheet(p){
   clearRoutes();
-  sheet.classList.remove("minimized","floating"); clearFloatPos();
-  setHighlight(p.id);
   sheet.innerHTML='<button class="sh-close" aria-label="Close">✕</button>'
     +'<button class="sh-pop" id="popBtn" title="Pop out (movable, resizable)">⤢</button>'
     +'<div class="grip"></div>'
     +'<div class="flip-wrap" id="flipWrap"></div>';
   sheet.querySelector(".sh-close").onclick=closeSheet;
   const pop=document.getElementById("popBtn");
-  if(pop){ pop.onclick=toggleFloat; updatePopIcon(); }
+  if(pop){ pop.textContent=sheet.classList.contains("floating")?"▣":"⤢"; pop.onclick=toggleFloat; }
   const gripEl=sheet.querySelector(".grip");
-  if(gripEl){ gripEl.addEventListener("mousedown",startDrag); gripEl.addEventListener("touchstart",startDrag,{passive:false}); }
+  if(gripEl){ gripEl.onmousedown=startDrag; gripEl.ontouchstart=startDrag; }
   renderFront(p);
   sheet.classList.add("show");
-  if(!sheet.classList.contains("floating") && !sheet.classList.contains("minimized")) scrim.classList.add("show");
+  if(!sheet.classList.contains("floating")) scrim.classList.add("show");
 }
 
 function renderTimeline(p){
@@ -2201,13 +2163,8 @@ function renderTimeline(p){
   if(rows){ tl.innerHTML=rows; tl.classList.add("show"); } else { tl.classList.remove("show"); }
 }
 
-function closeSheet(){ clearRoutes(); setHighlight(null); scrim.classList.remove("show"); sheet.classList.remove("show","floating","minimized"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
+function closeSheet(){ clearRoutes(); scrim.classList.remove("show"); sheet.classList.remove("show","floating"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
 scrim.onclick=closeSheet;
-sheet.addEventListener("click",function(e){
-  if(sheet.classList.contains("minimized") && !(e.target.closest&&(e.target.closest(".sh-close")||e.target.closest(".sh-pop")))){
-    sheet.classList.remove("minimized","floating"); clearFloatPos(); scrim.classList.add("show"); updatePopIcon();
-  }
-});
 
 /* ---------- floating / draggable card ---------- */
 let dragging=false, dOffX=0, dOffY=0;
@@ -2232,32 +2189,18 @@ document.addEventListener("mousemove",onDragMove);
 document.addEventListener("mouseup",onDragEnd);
 document.addEventListener("touchmove",onDragMove,{passive:false});
 document.addEventListener("touchend",onDragEnd);
-function clearFloatPos(){ sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
-function updatePopIcon(){
-  const pb=document.getElementById("popBtn"); if(!pb) return;
-  const s=sheet.classList;
-  if(s.contains("minimized")){ pb.textContent="▣"; pb.title="Dock"; }
-  else if(s.contains("floating")){ pb.textContent="‒"; pb.title="Minimize to name"; }
-  else { pb.textContent="⤢"; pb.title="Pop out"; }
-}
 function toggleFloat(){
-  const s=sheet.classList;
-  if(s.contains("minimized")){ s.remove("minimized","floating"); clearFloatPos(); scrim.classList.add("show"); }
-  else if(s.contains("floating")){ s.remove("floating"); s.add("minimized"); clearFloatPos(); scrim.classList.remove("show"); }
-  else { s.add("floating"); scrim.classList.remove("show"); if(!sheet.style.left){ sheet.style.left="16px"; sheet.style.top="88px"; sheet.style.right="auto"; sheet.style.bottom="auto"; } }
-  updatePopIcon();
-}
-function seeOnMap(p){
-  const c=geo[p.addr];
-  showMap(true);
-  sheet.classList.remove("floating"); sheet.classList.add("minimized"); clearFloatPos(); scrim.classList.remove("show"); updatePopIcon();
-  setTimeout(()=>{
-    if(!c){ toast("Still locating this one — give it a moment"); return; }
-    try{
-      if(home) map.fitBounds(L.latLngBounds([home,c]),{paddingTopLeft:[40,110],paddingBottomRight:[40,90]});
-      else map.setView(c,14);
-    }catch(e){}
-  },130);
+  const f=sheet.classList.toggle("floating");
+  const pb=document.getElementById("popBtn");
+  if(f){
+    scrim.classList.remove("show");
+    if(!sheet.style.left){ sheet.style.left="16px"; sheet.style.top="88px"; sheet.style.right="auto"; sheet.style.bottom="auto"; }
+    if(pb){ pb.textContent="▣"; pb.title="Dock to bottom"; }
+  } else {
+    sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height="";
+    scrim.classList.add("show");
+    if(pb){ pb.textContent="⤢"; pb.title="Pop out (movable, resizable)"; }
+  }
 }
 function focusOnMap(p){
   showMap();
@@ -2331,7 +2274,7 @@ function passes(p, ignoreQuery){
 function renderList(){
   renderBand();
   const list=document.getElementById("list");
-  let shown=places.filter(p=>passes(p));
+  let shown=places.filter(passes);
   if(home){ shown=shown.slice().sort((a,b)=>{
     const da=geo[a.addr]?dist(home,geo[a.addr]):9999, db=geo[b.addr]?dist(home,geo[b.addr]):9999; return da-db;
   }); }
@@ -2357,46 +2300,14 @@ function renderList(){
         <button class="lc-heart ${m.fav?"on":""}" aria-label="Save">${m.fav?"♥":"♡"}</button>
       </div>
       <div class="lc-meta">${distPill}${stPill}${typeTag}${ageNote}${when}</div>`;
-    card.onclick=()=>openSheet(p);
+    card.onclick=()=>focusOnMap(p);
     const hb=card.querySelector(".lc-heart");
     hb.onclick=(ev)=>{ ev.stopPropagation(); const mm=mk(p.id); mm.fav=!mm.fav; saveMarks(); hb.classList.toggle("on",mm.fav); hb.textContent=mm.fav?"♥":"♡"; card.classList.toggle("fav",mm.fav); refreshMarker(p); };
     list.appendChild(card);
   });
   if(truncated){ const n=document.createElement("div"); n.style.cssText="text-align:center;color:var(--soft);padding:16px 4px 4px;font-size:12.5px;line-height:1.5"; n.textContent="Showing nearest "+CAP+" of "+total+" — search or use filters to narrow."; list.appendChild(n); }
 }
-/* ---- list search: live filter + local town/name suggestions + button ---- */
-let _listSug=null;
-function buildListSug(){
-  if(_listSug) return _listSug;
-  const townMap=new Map();
-  places.forEach(p=>{ const t=((p.addr||"").split(",")[1]||"").trim(); if(t){ const k=t.toLowerCase(); if(!townMap.has(k)) townMap.set(k,t); } });
-  _listSug={ towns:[...townMap.values()].map(t=>({label:t+"  ·  town",q:t,key:t.toLowerCase()})),
-             names:places.map(p=>({label:p.name,q:p.name,key:(p.name||"").toLowerCase()})) };
-  return _listSug;
-}
-function _ed(a,b){ const m=a.length,n=b.length; if(Math.abs(m-n)>2) return 3; const d=[]; for(let i=0;i<=m;i++){ d[i]=[i]; } for(let j=0;j<=n;j++){ d[0][j]=j; } for(let i=1;i<=m;i++){ for(let j=1;j<=n;j++){ d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); } } return d[m][n]; }
-function listSuggestions(inp){
-  const q=(inp||"").trim().toLowerCase(); if(q.length<2) return [];
-  const S=buildListSug(); const out=[];
-  S.towns.forEach(t=>{ let s=-1; if(t.key.startsWith(q)) s=0; else if(t.key.includes(q)) s=1; else { const d=_ed(q,t.key); if(d<=2) s=2+d; } if(s>=0) out.push({label:t.label,q:t.q,s:s}); });
-  S.names.forEach(nm=>{ let s=-1; if(nm.key.startsWith(q)) s=0.5; else if(nm.key.includes(q)) s=1.6; if(s>=0) out.push({label:nm.label,q:nm.q,s:s}); });
-  out.sort((a,b)=>a.s-b.s);
-  const seen=new Set(),res=[]; for(const c of out){ const k=c.q.toLowerCase(); if(seen.has(k)) continue; seen.add(k); res.push(c); if(res.length>=7) break; } return res;
-}
-function hideListSuggest(){ const b=document.getElementById("listSuggest"); if(b){ b.classList.remove("show"); b.innerHTML=""; } }
-function showListSuggest(){
-  const box=document.getElementById("listSuggest"); if(!box) return;
-  const cands=listSuggestions(document.getElementById("search").value);
-  if(!cands.length){ hideListSuggest(); return; }
-  box.innerHTML='<div class="sg-head">Did you mean — tap to search</div>'+cands.map((c,i)=>'<button class="sg-item" data-i="'+i+'">'+esc(c.label)+'</button>').join("");
-  box.querySelectorAll(".sg-item").forEach(b=>{ b.onclick=()=>{ applyListSearch(cands[+b.dataset.i].q); }; });
-  box.classList.add("show");
-}
-function listMatchCount(){ return places.filter(p=>passes(p)).length; }
-function applyListSearch(q){ const el=document.getElementById("search"); el.value=q; filters.q=q.trim().toLowerCase(); renderList(); hideListSuggest(); const n=listMatchCount(); toast(n+(n===1?" match":" matches")); }
-document.getElementById("search").oninput=e=>{ filters.q=e.target.value.trim().toLowerCase(); renderList(); showListSuggest(); };
-document.getElementById("search").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("listSearchBtn").click(); } });
-document.getElementById("listSearchBtn").onclick=()=>{ filters.q=document.getElementById("search").value.trim().toLowerCase(); renderList(); hideListSuggest(); const n=listMatchCount(); toast(n+(n===1?" match":" matches")); };
+document.getElementById("search").oninput=e=>{ filters.q=e.target.value.trim().toLowerCase(); renderList(); };
 
 /* ---------- history ---------- */
 function renderHistory(){
@@ -2453,12 +2364,7 @@ function renderWaitlist(){
 /* ---------- tabs ---------- */
 const tabMap=document.getElementById("tabMap"), tabList=document.getElementById("tabList"), tabHist=document.getElementById("tabHist"), tabWait=document.getElementById("tabWait"), tabAbout=document.getElementById("tabAbout");
 const mapControls=document.getElementById("mapControls"), radiusRow=document.getElementById("radiusRow"), hintEl=document.getElementById("hint");
-let savedMapView=null;
-function setTab(which, keep){
-  const currentlyMap = !document.body.classList.contains("list") && !document.body.classList.contains("hist") && !document.body.classList.contains("wait") && !document.body.classList.contains("about");
-  if(currentlyMap && which!=="map" && map){ try{ savedMapView={c:map.getCenter(), z:map.getZoom()}; }catch(e){} }
-  if(!keep) closeSheet();
-  hideListSuggest();
+function setTab(which){
   document.body.classList.toggle("list", which==="list");
   document.body.classList.toggle("hist", which==="hist");
   document.body.classList.toggle("wait", which==="wait");
@@ -2476,12 +2382,12 @@ function setTab(which, keep){
   if(!onMap) progress.classList.remove("show");
   setBarHeight();
 }
-function showMap(keep){ setTab("map", keep); buildMapChips(); refreshAllMarkers(); const v=savedMapView; if(map) setTimeout(()=>{ try{ map.invalidateSize(); }catch(e){} if(v){ try{ map.setView(v.c, v.z, {animate:false}); }catch(e){} } },60); }
+function showMap(){ setTab("map"); buildMapChips(); refreshAllMarkers(); if(map) setTimeout(()=>map.invalidateSize(),60); }
 function showList(){ setTab("list"); buildChips(); renderList(); }
 function showHistory(){ setTab("hist"); renderHistory(); }
 function showWaitlist(){ setTab("wait"); renderWaitlist(); }
 function showAbout(){ setTab("about"); }
-tabMap.onclick=()=>showMap(); tabList.onclick=()=>showList(); tabHist.onclick=()=>showHistory(); tabWait.onclick=()=>showWaitlist(); tabAbout.onclick=()=>showAbout();
+tabMap.onclick=showMap; tabList.onclick=showList; tabHist.onclick=showHistory; tabWait.onclick=showWaitlist; tabAbout.onclick=showAbout;
 
 /* keep list content clear of the floating bar */
 function setBarHeight(){
@@ -2580,9 +2486,7 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="32";
-  { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (marked dots on top so colour always shows)");
+  console.log("Daycare Map — build v20 (address suggestions + version badge)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
