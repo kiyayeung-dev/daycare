@@ -330,7 +330,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v35</div>
+  <div class="ver-badge" id="verBadge">v36</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -1921,9 +1921,14 @@ function clearRoutes(){
   if(routeWalk){ try{map.removeLayer(routeWalk);}catch(e){} routeWalk=null; }
 }
 function mins(sec){ const m=Math.round(sec/60); if(m<1) return "1 min"; if(m<60) return m+" min"; const h=Math.floor(m/60), r=m%60; return h+" hr"+(r?" "+r+" min":""); }
+function fetchTO(url, opts){
+  const ctl=new AbortController();
+  const t=setTimeout(function(){ try{ctl.abort();}catch(e){} }, 7000);
+  return fetch(url, Object.assign({}, opts||{}, {signal:ctl.signal})).finally(function(){ clearTimeout(t); });
+}
 async function osrm(mode, from, to){
   const url="https://router.project-osrm.org/route/v1/"+mode+"/"+from[1]+","+from[0]+";"+to[1]+","+to[0]+"?overview=full&geometries=geojson";
-  const r=await fetch(url); if(!r.ok) throw new Error("osrm "+r.status);
+  const r=await fetchTO(url); if(!r.ok) throw new Error("osrm "+r.status);
   const j=await r.json(); if(!j.routes||!j.routes.length) throw new Error("no route");
   return {dur:j.routes[0].duration, dist:j.routes[0].distance, coords:j.routes[0].geometry.coordinates.map(a=>[a[1],a[0]])};
 }
@@ -1942,7 +1947,7 @@ function decodePolyline(str, precision){
 }
 async function walkRoute(from, to){
   const body={locations:[{lat:from[0],lon:from[1]},{lat:to[0],lon:to[1]}],costing:"pedestrian",directions_options:{units:"kilometers"}};
-  const r=await fetch("https://valhalla1.openstreetmap.de/route",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  const r=await fetchTO("https://valhalla1.openstreetmap.de/route",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!r.ok) throw new Error("walk "+r.status);
   const j=await r.json();
   if(!j.trip||!j.trip.legs||!j.trip.legs.length) throw new Error("no walk route");
@@ -2584,9 +2589,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="35";
+  const APP_VER="36";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (fix duplicate map routes + stuck times)");
+  console.log("Daycare Map — build v"+APP_VER+" (route servers time out to estimates, no stuck dots)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
