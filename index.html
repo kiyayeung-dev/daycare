@@ -330,7 +330,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v33</div>
+  <div class="ver-badge" id="verBadge">v34</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -2097,7 +2097,7 @@ function renderFront(p){
     b.onclick=function(){
       const mm=mk(p.id); const s=b.dataset.s; mm.status=s;
       if(s==="called") mm.calledAt=Date.now();
-      if(s==="waitlist"){ mm.waitAt=Date.now(); if(!mm.calledAt) mm.calledAt=Date.now(); }
+      if(s==="waitlist") mm.waitAt=Date.now();
       if(s==="full") mm.fullAt=Date.now();
       if(s==="todo"){ mm.calledAt=0; mm.waitAt=0; mm.fullAt=0; }
       saveMarks();
@@ -2581,9 +2581,9 @@ function applyTheme(t){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="33";
+  const APP_VER="34";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (Not called clears the timeline history)");
+  console.log("Daycare Map — build v"+APP_VER+" (waitlist no longer auto-marks called)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
