@@ -147,16 +147,18 @@
   .about-ver{margin-top:26px;font-size:12px;color:var(--soft)}
   .fb-box{background:var(--accent-soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0 6px}
   .fb-box h3{margin-top:2px}
-  .fb-stars{display:flex;gap:6px;font-size:26px;color:var(--line);margin:2px 0 10px;cursor:pointer;user-select:none;-webkit-user-select:none}
-  .fb-stars span.on{color:#E8A317}
+  .fb-stars{display:flex;gap:8px;font-size:28px;color:var(--soft);opacity:.85;margin:2px 0 10px;cursor:pointer;user-select:none;-webkit-user-select:none}
+  .fb-stars span.on{color:#E8A317;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+  .fb-rating-txt{font-size:13px;color:var(--soft);margin:-4px 0 10px}
   .fb-stars span:active{transform:scale(1.15)}
   .fb-text{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;background:var(--card);color:var(--ink);resize:vertical;min-height:60px}
   .fb-text:focus{border-color:var(--accent);outline:none}
   .fb-send{margin-top:10px;background:var(--accent);color:#fff;border:none;border-radius:999px;padding:10px 22px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
   .fb-send:active{opacity:.85}
-  .help-btn{position:absolute;top:10px;right:12px;z-index:1400;width:32px;height:32px;border-radius:50%;
+  .help-btn{flex:0 0 auto;margin-left:2px;width:34px;height:34px;border-radius:50%;
     border:1px solid var(--line);background:var(--card);color:var(--accent);font:inherit;font-weight:800;
-    font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+    font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;
+    box-shadow:0 1px 3px rgba(42,35,30,.10)}
   .help-btn:active{opacity:.7}
   .modal-scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2000;display:none}
   .modal-scrim.show{display:block}
@@ -348,7 +350,6 @@
 <body>
 <div id="map"></div>
 
-<button class="help-btn" id="helpBtn" aria-label="How to use this app" title="How to use this app">?</button>
 <div class="modal-scrim" id="helpScrim"></div>
 <div class="modal" id="helpModal" role="dialog" aria-label="How to use this app">
   <button class="m-close" id="helpClose" aria-label="Close">&times;</button>
@@ -410,6 +411,7 @@
       <button id="tabWait">Waitlist</button>
       <button id="tabAbout">About</button>
     </div>
+    <button class="help-btn" id="helpBtn" aria-label="How to use this app" title="How to use this app">?</button>
   </div>
   <div class="addr-row" id="mapControls">
     <input class="addr-in" id="addr" placeholder="Enter your home address…" autocomplete="off" enterkeyhint="search">
@@ -425,7 +427,7 @@
   </div>
   <div class="mapchips" id="mapChips"></div>
   <div class="hint" id="hint">◉ Enter your address (or tap anywhere on the map) to set home · tap a green dot for its call card</div>
-  <div class="ver-badge" id="verBadge">v40</div>
+  <div class="ver-badge" id="verBadge">v42</div>
   <div class="progress" id="progress"><span class="spin"></span><span id="progressTxt">Mapping daycares…</span></div>
 </div>
 
@@ -483,8 +485,10 @@
       <div class="fb-stars" id="fbStars" role="group" aria-label="Star rating">
         <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
       </div>
+      <div class="fb-rating-txt" id="fbRatingTxt">Tap a star to rate (optional)</div>
       <textarea id="fbText" class="fb-text" rows="3" placeholder="Your review, a correction, or a suggestion…"></textarea>
       <button class="fb-send" id="fbSend">Send feedback</button>
+      <div id="fbFallback" style="display:none;margin-top:12px;font-size:13.5px;line-height:1.5">If your email app didn't open, email us directly at <b>discoverdaycare@gmail.com</b> &mdash; or <button type="button" class="fb-send" id="fbCopy" style="padding:6px 14px;font-size:13px;margin-left:4px">Copy my message</button></div>
     </div>
 
     <h3>Colour theme</h3>
@@ -2110,6 +2114,10 @@ function setHome(latlng,fly){
   updateRadiusCount(); saveHome();
   const h=document.getElementById("hint"); if(h) h.style.display="none";
   if(document.body.classList.contains("list")) renderList();
+  // If a call card is open, recalculate its walking/driving times for the new home
+  if(openPlace && sheet && sheet.classList.contains("show")){
+    try{ renderFront(openPlace); }catch(e){}
+  }
 }
 function drawRing(){
   if(!home||!mapReady||!map) return;
@@ -2300,7 +2308,9 @@ function flipSheet(p, toBack){
   },165);
 }
 
+let openPlace=null;
 function openSheet(p){
+  openPlace=p;
   clearRoutes();
   sheet.classList.remove("minimized","floating"); clearFloatPos();
   setHighlight(p.id);
@@ -2327,7 +2337,7 @@ function renderTimeline(p){
   if(rows){ tl.innerHTML=rows; tl.classList.add("show"); } else { tl.classList.remove("show"); }
 }
 
-function closeSheet(){ clearRoutes(); setHighlight(null); scrim.classList.remove("show"); sheet.classList.remove("show","floating","minimized"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
+function closeSheet(){ openPlace=null; clearRoutes(); setHighlight(null); scrim.classList.remove("show"); sheet.classList.remove("show","floating","minimized"); sheet.style.left="";sheet.style.top="";sheet.style.right="";sheet.style.bottom="";sheet.style.width="";sheet.style.height=""; }
 scrim.onclick=closeSheet;
 sheet.addEventListener("click",function(e){
   if(sheet.classList.contains("minimized") && !(e.target.closest&&(e.target.closest(".sh-close")||e.target.closest(".sh-pop")))){
@@ -2705,18 +2715,38 @@ function applyTheme(t){
 })();
 
 /* ---------- feedback (opens the user's email app addressed to you; only you receive it) ---------- */
-const FEEDBACK_EMAIL="YOUR_EMAIL_HERE@example.com";
+const FEEDBACK_EMAIL="discoverdaycare@gmail.com";
 (function initFeedback(){
   let rating=0;
   const stars=document.getElementById("fbStars");
-  if(stars){ stars.querySelectorAll("span").forEach(s=>{ s.onclick=()=>{ rating=+s.dataset.v; stars.querySelectorAll("span").forEach(x=>x.classList.toggle("on",(+x.dataset.v)<=rating)); }; }); }
+  if(stars){ stars.querySelectorAll("span").forEach(s=>{ s.onclick=()=>{ rating=+s.dataset.v;
+    stars.querySelectorAll("span").forEach(x=>x.classList.toggle("on",(+x.dataset.v)<=rating));
+    const rt=document.getElementById("fbRatingTxt"); if(rt) rt.textContent=rating+" out of 5 stars";
+  }; }); }
   const send=document.getElementById("fbSend");
   if(send) send.onclick=()=>{
     const ta=document.getElementById("fbText"); const txt=((ta&&ta.value)||"").trim();
     if(!txt && !rating){ toast("Add a rating or a note first"); return; }
-    const subj="Discover Daycare feedback"+(rating?(" ("+rating+"★)"):"");
-    const body=(rating?("Rating: "+rating+"/5\n\n"):"")+(txt||"(no message)")+"\n\n— sent from Discover Daycare";
-    window.location.href="mailto:"+FEEDBACK_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+    const subj="Discover Daycare feedback"+(rating?(" ("+rating+"\u2605)"):"");
+    const body=(rating?("Rating: "+rating+"/5\n\n"):"")+(txt||"(no message)")+"\n\n\u2014 sent from Discover Daycare";
+    const link="mailto:"+FEEDBACK_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+    toast("Opening your email app\u2026");
+    let opened=false;
+    try{ const w=window.open(link,"_blank"); opened=!!w; }catch(e){}
+    if(!opened){ try{ window.location.href=link; opened=true; }catch(e){} }
+    // If the mail app doesn't open (some in-app browsers block it), show a copy fallback.
+    setTimeout(function(){
+      const fb=document.getElementById("fbFallback");
+      if(fb) fb.style.display="block";
+    }, 1200);
+  };
+  const cp=document.getElementById("fbCopy");
+  if(cp) cp.onclick=function(){
+    const ta=document.getElementById("fbText"); const txt=((ta&&ta.value)||"").trim();
+    const msg=(rating?("Rating: "+rating+"/5\n"):"")+txt;
+    const done=function(){ toast("Copied \u2014 paste it into an email to "+FEEDBACK_EMAIL); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(msg).then(done,done); }
+    else{ try{ const t=document.createElement("textarea"); t.value=msg; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); done(); }catch(e){ toast("Couldn't copy on this device"); } }
   };
 })();
 
@@ -2806,9 +2836,9 @@ if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
 
 /* ---------- boot ---------- */
 (async ()=>{
-  const APP_VER="40";
+  const APP_VER="42";
   { const vb=document.getElementById("verBadge"); if(vb) vb.textContent="v"+APP_VER; const av=document.getElementById("aboutVer"); if(av) av.textContent="Version "+APP_VER; }
-  console.log("Daycare Map — build v"+APP_VER+" (help + backup/restore, government data only)");
+  console.log("Daycare Map — build v"+APP_VER+" (help spacing, stars, feedback fallback, home-change distances)");
   initMap();
   setBarHeight();
   marks=(await sget(KEY))||{};
